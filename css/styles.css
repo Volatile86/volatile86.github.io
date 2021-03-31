@@ -160,12 +160,12 @@ sup {
 }
 
 a {
-  color: #64a19d;
+  color: #305ab7;
   text-decoration: none;
   background-color: transparent;
 }
 a:hover {
-  color: #467370;
+  color: #6279ad;
   text-decoration: underline;
 }
 
@@ -9903,7 +9903,7 @@ button.bg-black:focus {
 }
 
 .text-primary {
-  color: #64a19d !important;
+  color: #305ab7 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -10278,7 +10278,7 @@ body {
     padding: 5rem;
   }
   .projects-section .project-text hr {
-    border-color: #64a19d;
+    border-color: #305ab7;
     border-width: 0.25rem;
     width: 30%;
   }
@@ -10317,7 +10317,7 @@ body {
   letter-spacing: 0.15rem;
 }
 .contact-section .card hr {
-  border-color: #64a19d;
+  border-color: #305ab7;
   border-width: 0.25rem;
   width: 3rem;
 }
