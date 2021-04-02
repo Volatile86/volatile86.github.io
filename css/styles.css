@@ -10250,7 +10250,6 @@ body {
 }
 
 .about-section {
-  padding-top: 10rem;
   background: linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
 }
 .about-section p {
@@ -10258,6 +10257,7 @@ body {
 }
 
 .projects-section {
+  background-image: linear-gradient(to bottom, #333333, #3c3c3f, #45454b, #4d4f57, #555964, #525460, #4f505b, #4c4b57, #3c3840, #2c272b, #1a1718, #000000);
   padding: 10rem 0;
 }
 .projects-section .featured-text {
