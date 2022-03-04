@@ -90,7 +90,7 @@ hr {
   border-color: transparent;
 }
 
-.navbar-default .navbar-brand {
+.navbar-default .navbar-brand m-0 text-white {
   color: white;
 }
 

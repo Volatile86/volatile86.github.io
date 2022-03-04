@@ -4169,7 +4169,7 @@ input[type="button"].btn-block {
   justify-content: space-between;
 }
 
-.navbar-brand {
+.navbar-brand m-0 text-white {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -4179,7 +4179,7 @@ input[type="button"].btn-block {
   white-space: nowrap;
 }
 
-.navbar-brand:hover, .navbar-brand:focus {
+.navbar-brand m-0 text-white:hover, .navbar-brand m-0 text-white:focus {
   text-decoration: none;
 }
 
@@ -4453,11 +4453,11 @@ input[type="button"].btn-block {
   display: none;
 }
 
-.navbar-light .navbar-brand {
+.navbar-light .navbar-brand m-0 text-white {
   color: rgba(0, 0, 0, 0.9);
 }
 
-.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+.navbar-light .navbar-brand m-0 text-white:hover, .navbar-light .navbar-brand m-0 text-white:focus {
   color: rgba(0, 0, 0, 0.9);
 }
 
@@ -4501,11 +4501,11 @@ input[type="button"].btn-block {
   color: rgba(0, 0, 0, 0.9);
 }
 
-.navbar-dark .navbar-brand {
+.navbar-dark .navbar-brand m-0 text-white {
   color: #fff;
 }
 
-.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+.navbar-dark .navbar-brand m-0 text-white:hover, .navbar-dark .navbar-brand m-0 text-white:focus {
   color: #fff;
 }
 

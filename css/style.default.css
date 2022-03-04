@@ -1605,7 +1605,7 @@ STYLE SWITCHER FOR DEMO
   padding: 0.5rem 1rem;
 }
 
-.navbar-brand {
+.navbar-brand m-0 text-white {
   display: inline-block;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1623,11 +1623,11 @@ STYLE SWITCHER FOR DEMO
   border-radius: 0.25rem;
 }
 
-.navbar-light .navbar-brand {
+.navbar-light .navbar-brand m-0 text-white {
   color: rgba(0, 0, 0, 0.9);
 }
 
-.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+.navbar-light .navbar-brand m-0 text-white:focus, .navbar-light .navbar-brand m-0 text-white:hover {
   color: rgba(0, 0, 0, 0.9);
 }
 
@@ -1663,11 +1663,11 @@ STYLE SWITCHER FOR DEMO
   color: rgba(0, 0, 0, 0.5);
 }
 
-.navbar-dark .navbar-brand {
+.navbar-dark .navbar-brand m-0 text-white {
   color: white;
 }
 
-.navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
+.navbar-dark .navbar-brand m-0 text-white:focus, .navbar-dark .navbar-brand m-0 text-white:hover {
   color: white;
 }
 

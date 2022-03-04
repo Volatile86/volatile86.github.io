@@ -1,1 +1,45 @@
-/* your styles go here */
+.navbar.navbar-expand-lg
+{
+  background: #230372;
+  background: -webkit-linear-gradient(top left, #230372, #CBA7E8);
+  background: -moz-linear-gradient(top left, #230372, #CBA7E8);
+  background: linear-gradient(to bottom right, #230372, #CBA7E8);
+}
+
+.navbar-header.d-flex.align-items-center.justify-content-center.rounded-pill.alert.alert-success.p-2.m-0.text-center
+{
+  background: #76E253;
+  background: -webkit-linear-gradient(top left, #76E253, #1CBF79);
+  background: -moz-linear-gradient(top left, #76E253, #1CBF79);
+  background: linear-gradient(to bottom right, #76E253, #1CBF79);
+}
+
+.col-lg-12.text-center.rounded.alert.alert-primary.rounded-pill
+{
+  background: #230372;
+  background: -webkit-linear-gradient(top left, #230372, #CBA7E8);
+  background: -moz-linear-gradient(top left, #230372, #CBA7E8);
+  background: linear-gradient(to bottom right, #230372, #CBA7E8);
+}
+
+
+.greenGradient
+{
+  background: #76E253;
+  background: -webkit-linear-gradient(top left, #76E253, #1CBF79);
+  background: -moz-linear-gradient(top left, #76E253, #1CBF79);
+  background: linear-gradient(to bottom right, #76E253, #1CBF79);
+}
+
+.col-md-3.text-center.greenGradient.rounded.p-2
+{
+  background: #76E253;
+  background: -webkit-linear-gradient(top left, #76E253, #1CBF79);
+  background: -moz-linear-gradient(top left, #76E253, #1CBF79);
+  background: linear-gradient(to bottom right, #76E253, #1CBF79);
+}
+
+.col-md-3.text-center.greenGradient.rounded.p-2 a
+{
+  color:black;
+}

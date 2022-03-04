@@ -4042,7 +4042,7 @@ input[type=button].btn-block {
   align-items: center;
   justify-content: space-between;
 }
-.navbar-brand {
+.navbar-brand m-0 text-white {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -4051,7 +4051,7 @@ input[type=button].btn-block {
   line-height: inherit;
   white-space: nowrap;
 }
-.navbar-brand:hover, .navbar-brand:focus {
+.navbar-brand m-0 text-white:hover, .navbar-brand m-0 text-white:focus {
   text-decoration: none;
 }
 
@@ -4312,10 +4312,10 @@ input[type=button].btn-block {
   display: none;
 }
 
-.navbar-light .navbar-brand {
+.navbar-light .navbar-brand m-0 text-white {
   color: rgba(0, 0, 0, 0.9);
 }
-.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+.navbar-light .navbar-brand m-0 text-white:hover, .navbar-light .navbar-brand m-0 text-white:focus {
   color: rgba(0, 0, 0, 0.9);
 }
 .navbar-light .navbar-nav .nav-link {
@@ -4350,10 +4350,10 @@ input[type=button].btn-block {
   color: rgba(0, 0, 0, 0.9);
 }
 
-.navbar-dark .navbar-brand {
+.navbar-dark .navbar-brand m-0 text-white {
   color: #fff;
 }
-.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+.navbar-dark .navbar-brand m-0 text-white:hover, .navbar-dark .navbar-brand m-0 text-white:focus {
   color: #fff;
 }
 .navbar-dark .navbar-nav .nav-link {
@@ -10130,7 +10130,7 @@ body {
 #mainNav .navbar-toggler:focus {
   outline: none;
 }
-#mainNav .navbar-brand {
+#mainNav .navbar-brand m-0 text-white {
   color: #000000;
   font-weight: 700;
   padding: 0.9rem 0;
@@ -10152,7 +10152,7 @@ body {
     background-color: transparent;
     transition: background-color 0.3s ease-in-out;
   }
-  #mainNav .navbar-brand {
+  #mainNav .navbar-brand m-0 text-white {
     padding: 0.5rem 0;
     color: rgba(255, 255, 255, 0.5);
   }
@@ -10170,7 +10170,7 @@ body {
   #mainNav.navbar-shrink {
     background-color: #fff;
   }
-  #mainNav.navbar-shrink .navbar-brand {
+  #mainNav.navbar-shrink .navbar-brand m-0 text-white {
     color: #000000;
   }
   #mainNav.navbar-shrink .nav-link {
