@@ -843,7 +843,7 @@ body.compensate-for-scrollbar {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     background-color: rgba(0, 0, 0, .1);
-    background-position: center center;
+   ;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
