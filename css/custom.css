@@ -1,3 +1,8 @@
+.rounded-pill
+{
+  opacity: .8;
+}
+
 .navbar.navbar-expand-lg
 {
   background: #230372;
@@ -42,4 +47,16 @@
 .col-md-3.text-center.greenGradient.rounded.p-2 a
 {
   color:black;
+}
+
+.siteButton {
+  border-radius: 10px;
+  color: white;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  color:black;
+  opacity: .8;
 }
