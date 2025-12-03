@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music: Determinism - SHOCK.THE.SYSTEM.</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Howler.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            background-color: #121212;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #1f1f1f !important;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #f8f9fa !important;
+        }
+
+        .nav-link:hover {
+            color: #ff3d00 !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://www.shockingthesystem.com/images/determinismHeaderUpdated.png') no-repeat center center;
+            background-size: cover;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px;
+            min-height: 300px;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 3rem;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Player Section */
+        .player-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .song-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .song-list li {
+            padding: 8px 12px;
+            margin: 4px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .song-list li:hover {
+            background-color: #ff3d00;
+            color: #fff;
+        }
+
+        #visualizer-container {
+            margin: 30px 0;
+        }
+
+        #visualizer {
+            width: 100%;
+            max-width: 640px;
+            height: 120px;
+            border-radius: 8px;
+            background-color: #1f1f1f;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .player-buttons button {
+            margin: 5px;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: #1f1f1f;
+            color: #cfcfcf;
+            padding: 40px 20px 20px 20px;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        .main-footer a {
+            color: #ff3d00;
+            text-decoration: none;
+        }
+
+        .main-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .footer-columns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column p,
+        .footer-column a {
+            margin: 5px 0;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="https://www.shockingthesystem.com/home">SHOCK.THE.SYSTEM.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/musicView">Music</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/store">Store</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Music: Determinism</h1>
+    </section>
+
+    <!-- Player Section -->
+    <div class="container player-container">
+        <!-- Visualizer -->
+        <div id="visualizer-container">
+            <canvas id="visualizer"></canvas>
+        </div>
+
+        <!-- Song List -->
+        <ul class="song-list">
+            <li onclick="playSong(0)">1. How Do I Turn This On?</li>
+            <li onclick="playSong(1)">2. Kayfabe</li>
+            <li onclick="playSong(2)">3. Hot In Here (But It's Not Nelly This Time)</li>
+            <li onclick="playSong(3)">4. Hey Girl</li>
+            <li onclick="playSong(4)">5. It's All A Joke</li>
+            <li onclick="playSong(5)">6. Killer Mask There, Dude</li>
+            <li onclick="playSong(6)">7. This Place Is A Mess</li>
+            <li onclick="playSong(7)">8. Timmy Tarantino</li>
+            <li onclick="playSong(8)">9. Ramona</li>
+            <li onclick="playSong(9)">10. There Was Room On That Door For Both Of Them</li>
+            <li onclick="playSong(10)">11. American Nightmare</li>
+        </ul>
+
+        <!-- Player Buttons -->
+        <div class="player-buttons mt-3">
+            <button class="btn btn-primary" onclick="playNextSong()">Play Next Song</button>
+            <button class="btn btn-danger" onclick="stopSong()">Stop</button>
+        </div>
+
+        <!-- Download -->
+        <div class="mt-4">
+            <a href="http://shockingthesystem.com/music/upintodreams/determinism/UpIntoDreams-Determinism.zip"
+                class="btn btn-lg btn-primary shadow-lg rounded-pill px-4" download>
+                Download "Determinism"
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-columns container">
+            <div class="footer-column">
+                <div class="footer-logo">Fake Info</div>
+                <p>53 Broadway, Brooklyn, NY 11249</p>
+                <p>Phone: (020) 123 456 789</p>
+            </div>
+            <div class="footer-column">
+                <h6>Links</h6>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="blog.html">Blog</a></p>
+                <p><a href="pictures.html">Pictures</a></p>
+                <p><a href="music.html">Music</a></p>
+            </div>
+            <div class="footer-column">
+                <h6>Follow Us</h6>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">YouTube</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
+            <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+
+    <!-- Howler.js Player -->
+    <script>
+        const songList = [
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/01-How Do I Turn This On.mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/02-Kayfabe.mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/03-Hot In Here.mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/04-Hey Girl.mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/05-Its All a Joke.mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/06- Killer Mask There Dude.mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/07-This Place is a mess.mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/08-Timmy Tarantino.mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/09-Ramona.mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/10 -There was Room On that Door for both of them (Drifted).mp3',
+            'https://www.shockingthesystem.com/music/upintodreams/determinism/11-American Nightmare.mp3'
+        ];
+
+        let currentSongIndex = 0;
+        let currentSong = new Howl({
+            src: [songList[currentSongIndex]],
+            html5: true,
+            onend: playNextSong
+        });
+
+        let audioSource;
+        let analyser = Howler.ctx.createAnalyser();
+        let canvas = document.getElementById('visualizer');
+        let ctx = canvas.getContext('2d');
+
+        function playSong(index) {
+            currentSong.stop();
+            currentSongIndex = index;
+            currentSong = new Howl({
+                src: [songList[currentSongIndex]],
+                html5: true,
+                onend: playNextSong
+            });
+            currentSong.play();
+            setupVisualizer();
+        }
+
+        function playNextSong() {
+            currentSong.stop();
+            currentSongIndex = (currentSongIndex + 1) % songList.length;
+            currentSong = new Howl({
+                src: [songList[currentSongIndex]],
+                html5: true,
+                onend: playNextSong
+            });
+            currentSong.play();
+            setupVisualizer();
+        }
+
+        function stopSong() {
+            currentSong.stop();
+        }
+
+        function setupVisualizer() {
+            analyser = Howler.ctx.createAnalyser();
+            audioSource = Howler.ctx.createMediaElementSource(currentSong._sounds[0]._node);
+            audioSource.connect(analyser);
+            analyser.connect(Howler.ctx.destination);
+            analyser.fftSize = 256;
+            visualize();
+        }
+
+        function visualize() {
+            requestAnimationFrame(visualize);
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            analyser.getByteFrequencyData(dataArray);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const barWidth = (canvas.width / bufferLength) * 2.5;
+            let x = 0;
+
+            for (let i = 0; i < bufferLength; i++) {
+                const barHeight = dataArray[i] / 255 * canvas.height;
+                const pulse = Math.sin((Date.now() / 100) + i) * 5;
+                const hue = (Date.now() / 50 + i * 8) % 360;
+                ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+                ctx.fillRect(x, canvas.height - barHeight - pulse, barWidth, barHeight + pulse);
+                x += barWidth + 1;
+            }
+        }
+    </script>
+</body>
+
+</html>

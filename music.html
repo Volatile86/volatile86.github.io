@@ -2,221 +2,238 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Music - SHOCK.THE.SYSTEM.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music: Up Into Dreams - SHOCK.THE.SYSTEM.</title>
 
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <style>
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      background-color: #121212;
-      color: #f8f9fa;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      flex-direction: column;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            background-color: #121212;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    /* Navbar */
-    .navbar {
-      background-color: #1f1f1f !important;
-    }
+        /* Navbar */
+        .navbar {
+            background-color: #1f1f1f !important;
+        }
 
-    .navbar-brand,
-    .nav-link {
-      color: #f8f9fa !important;
-    }
+        .navbar-brand,
+        .nav-link {
+            color: #f8f9fa !important;
+        }
 
-    .nav-link:hover {
-      color: #ff3d00 !important;
-    }
+        .nav-link:hover {
+            color: #ff3d00 !important;
+        }
 
-    /* Hero Section */
-    .hero {
-      position: relative;
-      background: url(img/fire.jpg) no-repeat center center;
-      background-size: cover;
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 80px 20px;
-      min-height: 300px;
-    }
+        /* Hero Section */
+        .hero {
+            background: url(img/fire.jpg) no-repeat center center;
+            background-size: cover;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            min-height: 300px;
+        }
 
-    .hero h1 {
-      color: #fff;
-      font-size: 3rem;
-      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-      margin: 0;
-      z-index: 2;
-      position: relative;
-    }
+        .hero h1 {
+            color: #fff;
+            font-size: 3rem;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            z-index: 2;
+            position: relative;
+        }
 
-    /* Music Section */
-    .music-container {
-      margin: 50px auto;
-      max-width: 900px;
-    }
+        /* Album cards */
+        .album-card img {
+            max-height: 300px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-    iframe {
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    }
+        .album-card img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        }
 
-    /* Footer */
-    .main-footer {
-      background-color: #1f1f1f;
-      color: #cfcfcf;
-      padding: 40px 20px 20px 20px;
-      font-size: 14px;
-      margin-top: auto;
-    }
+        .album-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
 
-    .main-footer a {
-      color: #ff3d00;
-      text-decoration: none;
-    }
+        /* Footer */
+        .main-footer {
+            background-color: #1f1f1f;
+            color: #cfcfcf;
+            padding: 40px 20px 20px 20px;
+            font-size: 14px;
+            margin-top: auto;
+        }
 
-    .main-footer a:hover {
-      text-decoration: underline;
-    }
+        .main-footer a {
+            color: #ff3d00;
+            text-decoration: none;
+        }
 
-    .footer-logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-      color: #fff;
-    }
+        .main-footer a:hover {
+            text-decoration: underline;
+        }
 
-    .footer-columns {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+        }
 
-    .footer-column {
-      flex: 1;
-      min-width: 200px;
-      margin-bottom: 20px;
-    }
+        .footer-columns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-    .footer-column p,
-    .footer-column a {
-      margin: 5px 0;
-    }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
 
-    .footer-bottom {
-      border-top: 1px solid #333;
-      padding-top: 15px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      font-size: 13px;
-      color: #999;
-    }
+        .footer-column p,
+        .footer-column a {
+            margin: 5px 0;
+        }
 
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: #999;
+        }
 
-      .footer-bottom {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
 
-      iframe {
-        height: 300px !important;
-      }
-    }
-  </style>
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="blog.html">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pictures.html">Pictures</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="music.html">Music</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="books.html">Writing</a>
-          </li>
-        </ul>
-      </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pictures.html">Pictures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="music.html">Music</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="books.html">Book</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Music: Up Into Dreams</h1>
+    </section>
+
+    <!-- Album Section -->
+    <div class="container my-5">
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-12 col-md-6 text-center album-card mb-4 mb-md-0">
+                <a href="/musicPages/determinism.html">
+                    <img src="https://www.shockingthesystem.com/music/upintodreams/determinism/cover.jpeg"
+                        alt="Determinism Cover" class="img-fluid">
+                </a>
+                <div class="album-title">Determinism (2025)</div>
+            </div>
+
+            <div class="col-12 col-md-6 text-center album-card">
+                <a href="https://www.shockingthesystem.com/musicView/1">
+                    <img src="https://www.shockingthesystem.com/music/upintodreams/cesthorrifique/cover.jpeg"
+                        alt="C'est Horrifique Cover" class="img-fluid">
+                </a>
+                <div class="album-title">C'est Horrifique (2021)</div>
+            </div>
+
+        </div>
     </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Music</h1>
-  </section>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-columns container">
+            <div class="footer-column">
+                <div class="footer-logo">Fake Info</div>
+                <p>53 Broadway, Brooklyn, NY 11249</p>
+                <p>Phone: (020) 123 456 789</p>
+            </div>
+            <div class="footer-column">
+                <h6>Links</h6>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="blog.html">Blog</a></p>
+                <p><a href="pictures.html">Pictures</a></p>
+                <p><a href="music.html">Music</a></p>
+            </div>
+            <div class="footer-column">
+                <h6>Follow Us</h6>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">YouTube</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
+            <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
+        </div>
+    </footer>
 
-  <!-- Music Playlist Section -->
-  <section class="music-container container">
-    <iframe src="https://open.spotify.com/embed/playlist/03dSSTTdhUs9l8NqyFEdmP?utm_source=generator" width="100%"
-      height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-  </section>
-
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-columns container">
-      <div class="footer-column">
-        <div class="footer-logo">Fake Info</div>
-        <p>53 Broadway, Brooklyn, NY 11249</p>
-        <p>Phone: (020) 123 456 789</p>
-        <p>Email: info@example.com</p>
-      </div>
-      <div class="footer-column">
-        <h6>Links</h6>
-        <p><a href="index.html">Home</a></p>
-        <p><a href="blog.html">Blog</a></p>
-        <p><a href="pictures.html">Pictures</a></p>
-        <p><a href="music.html">Music</a></p>
-      </div>
-      <div class="footer-column">
-        <h6>Follow Us</h6>
-        <p><a href="#">Instagram</a></p>
-        <p><a href="#">Twitter</a></p>
-        <p><a href="#">YouTube</a></p>
-      </div>
-    </div>
-    <div class="footer-bottom container">
-      <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
-      <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap 5 JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
