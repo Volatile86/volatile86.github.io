@@ -2,140 +2,221 @@
 <html lang="en">
 
 <head>
-	<title>SHOCK.THE.SYSTEM.</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	    <!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Music - SHOCK.THE.SYSTEM.</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background-color: #121212;
+      color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #1f1f1f !important;
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: #f8f9fa !important;
+    }
+
+    .nav-link:hover {
+      color: #ff3d00 !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: url(img/fire.jpg) no-repeat center center;
+      background-size: cover;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px;
+      min-height: 300px;
+    }
+
+    .hero h1 {
+      color: #fff;
+      font-size: 3rem;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+      margin: 0;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Music Section */
+    .music-container {
+      margin: 50px auto;
+      max-width: 900px;
+    }
+
+    iframe {
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Footer */
+    .main-footer {
+      background-color: #1f1f1f;
+      color: #cfcfcf;
+      padding: 40px 20px 20px 20px;
+      font-size: 14px;
+      margin-top: auto;
+    }
+
+    .main-footer a {
+      color: #ff3d00;
+      text-decoration: none;
+    }
+
+    .main-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      margin: 5px 0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: #999;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      iframe {
+        height: 300px !important;
+      }
+    }
+  </style>
 </head>
 
-	<style>
-		.intro {
-			padding: 20px 0 !important;
-		}
-	</style>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a 	class="navbar-brand m-0 text-white m-0 text-white">Shock The
-				System</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="navbar-toggler-icon"></span>
-			</button>
-		  
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			  <ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-				  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item active">
-				  <a class="nav-link" href="blog.html">Blog</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="pictures.html">Pictures</a>
-				  </li>
-				<li class="nav-item">
-					<a class="nav-link text-white" href="music.html">Music</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="books.html">Book</a>
-				</li>
-			  </ul>
-			</div>
-		  </nav>
-		  
-		<!-- Hero Section-->
-							<!-- <div class="col-lg-12 text-center mt-4">
-          <a class="btn btn-warning" href="starTreatment.pdf" role="button"><span
-              class="oi oi-data-transfer-download"></span> Download un-edited and unfinished draft</a>
-        </div> -->
-		<section style="background: url(img/fire.jpg); background-size: cover;"
-			class="hero">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-center rounded alert alert-primary rounded-pill">
-						<h1 style="margin-bottom:0px">SHOCK.THE.SYSTEM.: Music</h1>
-					</div>
-		</section>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pictures.html">Pictures</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="music.html">Music</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="books.html">Writing</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-		<!-- Intro Section-->
-		<section class="intro">
-			<div class="container">
-				<iframe style="border-radius:12px"
-					src="https://open.spotify.com/embed/playlist/03dSSTTdhUs9l8NqyFEdmP?utm_source=generator"
-					width="100%" height="380" frameBorder="0" allowfullscreen=""
-					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-				</div>
-		</section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Music</h1>
+  </section>
 
-		<!-- Intro Section-->
-		<!-- Page Footer-->
-		<footer class="main-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="logo">
-							<h6 class="text-white">Fake Info</h6>
-						</div>
-						<div class="contact-details">
-							<p>53 Broadway, Broklyn, NY 11249</p>
-							<p>Phone: (020) 123 456 789</p>
+  <!-- Music Playlist Section -->
+  <section class="music-container container">
+    <iframe src="https://open.spotify.com/embed/playlist/03dSSTTdhUs9l8NqyFEdmP?utm_source=generator" width="100%"
+      height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </section>
 
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="copyrights">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<p>&copy; 2040. All rights reserved. SHOCK.THE.SYSTEM..</p>
-						</div>
-						<div class="col-md-6 text-right">
-							<p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel"
-									class="text-white">Your Mom</a>
-								<!-- Please do not remove the backlink to Bootstrap Temple unless you purchase an attribution-free license @ Bootstrap Temple or support us at http://bootstrapious.com/donate. It is part of the license conditions. Thanks for understanding :)                         -->
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- JavaScript files-->
-		<script type="module">
-			// Import the functions you need from the SDKs you need
-			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-			// TODO: Add SDKs for Firebase products that you want to use
-			// https://firebase.google.com/docs/web/setup#available-libraries
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-columns container">
+      <div class="footer-column">
+        <div class="footer-logo">Fake Info</div>
+        <p>53 Broadway, Brooklyn, NY 11249</p>
+        <p>Phone: (020) 123 456 789</p>
+        <p>Email: info@example.com</p>
+      </div>
+      <div class="footer-column">
+        <h6>Links</h6>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="pictures.html">Pictures</a></p>
+        <p><a href="music.html">Music</a></p>
+      </div>
+      <div class="footer-column">
+        <h6>Follow Us</h6>
+        <p><a href="#">Instagram</a></p>
+        <p><a href="#">Twitter</a></p>
+        <p><a href="#">YouTube</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
+      <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
+    </div>
+  </footer>
 
-			// Your web app's Firebase configuration
-			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-			const firebaseConfig = {
-				apiKey: "AIzaSyAJLWVrJhW_S7yQrt9Eg5Cv_sGEMn-RMFo",
-				authDomain: "shock-the-system.firebaseapp.com",
-				databaseURL: "https://shock-the-system-default-rtdb.firebaseio.com",
-				projectId: "shock-the-system",
-				storageBucket: "shock-the-system.appspot.com",
-				messagingSenderId: "266260825346",
-				appId: "1:266260825346:web:c2d4f2a2e334dfa92f6e1b",
-				measurementId: "G-0FQR4NZD0R"
-			};
-
-			// Initialize Firebase
-			const app = initializeApp(firebaseConfig);
-			const analytics = getAnalytics(app);
-		</script>
-
-	<!-- Custom stylesheet - for your changes-->
-	<link rel="stylesheet" href="css/custom.css">
-		<!-- theme stylesheet-->
-		<link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	</body>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
 
 </html>
