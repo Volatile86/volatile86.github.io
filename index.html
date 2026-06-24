@@ -41,7 +41,8 @@
       background-image: url(img/fire.jpg);
       background-repeat: no-repeat;
       background-size: cover;
-      background-position: center 35%; /* Moves image down so head is visible */
+      background-position: center 35%;
+      /* Moves image down so head is visible */
       flex: 1;
       display: flex;
       justify-content: center;
@@ -59,7 +60,8 @@
     /* Dreamy / Voidy Status Card Layout */
     .status-container {
       max-width: 800px;
-      margin: -30px auto 50px auto; /* Pulls the card slightly up into the hero edge for an integrated look */
+      margin: -30px auto 50px auto;
+      /* Pulls the card slightly up into the hero edge for an integrated look */
       padding: 0 20px;
       position: relative;
       z-index: 3;
@@ -67,13 +69,14 @@
 
     .status-card {
       background: rgba(31, 31, 31, 0.65);
-      border: 1px solid rgba(255, 61, 0, 0.15); /* Subtle brand orange border */
+      border: 1px solid rgba(255, 61, 0, 0.15);
+      /* Subtle brand orange border */
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-radius: 16px;
       padding: 2.5rem 2rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 
-                  0 0 30px rgba(255, 61, 0, 0.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(255, 61, 0, 0.03);
     }
 
     .status-badge {
@@ -164,7 +167,8 @@
       }
 
       .status-container {
-        margin-top: 20px; /* Reset pull-up on mobile devices to prevent overlaps */
+        margin-top: 20px;
+        /* Reset pull-up on mobile devices to prevent overlaps */
       }
 
       .footer-bottom {
@@ -178,9 +182,9 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
+      <a class="navbar-brand" href="#">SHOCK.THE.SYSTEM.</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -215,41 +219,56 @@
   </nav>
 
   <!-- Hero Section -->
-<section class="hero" style="flex-direction: column; height: auto; min-height: calc(100vh - 56px); padding-bottom: 60px; display: flex; align-items: center; justify-content: center;">
-  <div class="text-center mb-5">
-    <h1 style="letter-spacing: 0.1em; font-weight: 800; text-shadow: 0 0 20px rgba(255,255,255,0.15);">SHOCK.THE.SYSTEM.</h1>
-    <p class="tagline" style="color: rgba(255, 255, 255, 0.5); font-size: 1.25rem; font-weight: 300; letter-spacing: 0.2em; font-style: italic; margin-top: 0.5rem; text-transform: uppercase;">It begins again...</p>
-  </div>
+  <section class="hero"
+    style="flex-direction: column; height: auto; min-height: fit-content; padding-top: 40px; padding-bottom: 60px; display: flex; align-items: center; justify-content: center;">
+    <div class="text-center mb-5">
+      <h1 style="letter-spacing: 0.1em; font-weight: 800; text-shadow: 0 0 20px rgba(255,255,255,0.15);">
+        SHOCK.THE.SYSTEM.</h1>
+      <p class="tagline"
+        style="color: rgba(255, 255, 255, 0.5); font-size: 1.25rem; font-weight: 300; letter-spacing: 0.2em; font-style: italic; margin-top: 0.5rem; text-transform: uppercase;">
+        It begins again...</p>
+    </div>
 
-  <div class="status-container" style="max-width: 750px; width: 100%; padding: 0 20px; margin: 0 auto;">
-    <div class="status-card" style="background: rgba(20, 20, 20, 0.75); border: 1px solid rgba(255, 61, 0, 0.25); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-radius: 16px; padding: 3rem 2.5rem; box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 61, 0, 0.05);">
-      
+    <div class="status-container" style="max-width: 750px; width: 100%; padding: 0 20px; margin: 0 auto;">
+      <div class="status-card"
+        style="background: rgba(20, 20, 20, 0.75); border: 1px solid rgba(255, 61, 0, 0.25); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-radius: 16px; padding: 3rem 2.5rem; box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 61, 0, 0.05);">
 
-      <div class="d-flex justify-content-between align-items-center mb-4" style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
-        <div class="status-badge" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: #ff3d00; font-weight: 600;">System Protocol v2.0</div>
-        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; font-family: monospace;">STATUS: TRANSMITTING</div>
-      </div>
-      
-      <h2 class="status-title" style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 1.75rem; letter-spacing: -0.01em;">Current State of the Void</h2>
-      
-      <div class="status-text" style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.8; font-weight: 300;">
-        
-        <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400; margin-bottom: 1.5rem;">
-          The social media experiment known as <span style="color: #ff3d00; font-weight: 500;">SHOCK.THE.SYSTEM. 1.0</span> will soon close down. 
-        </p>
-        
-        <p style="margin-bottom: 1.5rem; opacity: 0.9;">
-          To summarize: <span style="color: #ef4444; font-style: italic;">it was a complete failure.</span> The nostalgic MySpace model of old no longer appears to be viable in this ecosystem. Infinite algorithmic doomscrolling on central corporate feeds seems to be the dopamine hit of choice for the masses. 
-        </p>
-        
-        <p style="margin-bottom: 0; font-size: 1.15rem; color: #00fff0; text-shadow: 0 0 15px rgba(0,255,240,0.2); font-weight: 400; letter-spacing: 0.02em;">
-          Not to fret, though. It is time to clear the cache. Time to begin again.
-        </p>
-        
+
+        <div class="d-flex justify-content-between align-items-center mb-4"
+          style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
+          <div class="status-badge"
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: #ff3d00; font-weight: 600;">
+            System Protocol v2.0</div>
+          <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; font-family: monospace;">
+            STATUS: TRANSMITTING</div>
+        </div>
+
+        <h2 class="status-title"
+          style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 1.75rem; letter-spacing: -0.01em;">
+          Current State of the Void</h2>
+
+        <div class="status-text" style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.8; font-weight: 300;">
+
+          <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400; margin-bottom: 1.5rem;">
+            The social media experiment known as <span style="color: #ff3d00; font-weight: 500;">SHOCK.THE.SYSTEM.
+              1.0</span> will soon close down.
+          </p>
+
+          <p style="margin-bottom: 1.5rem; opacity: 0.9;">
+            To summarize: <span style="color: #ef4444; font-style: italic;">it was a complete failure.</span> The
+            nostalgic MySpace model of old no longer appears to be viable in this ecosystem. Infinite algorithmic
+            doomscrolling on central corporate feeds seems to be the dopamine hit of choice for the masses.
+          </p>
+
+          <p
+            style="margin-bottom: 0; font-size: 1.15rem; color: #00fff0; text-shadow: 0 0 15px rgba(0,255,240,0.2); font-weight: 400; letter-spacing: 0.02em;">
+            Not to fret, though. It is time to clear the cache. Time to begin again.
+          </p>
+
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Footer -->
   <footer class="main-footer">
