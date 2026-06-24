@@ -2,296 +2,336 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Books - SHOCK.THE.SYSTEM.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Books - SHOCK.THE.SYSTEM.</title>
 
-	<!-- Bootstrap 5 CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-	<style>
-		html,
-		body {
-			height: 100%;
-			margin: 0;
-			background-color: #121212;
-			color: #f8f9fa;
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			display: flex;
-			flex-direction: column;
-		}
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background-color: #121212;
+            color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            letter-spacing: 0.03em;
+        }
 
-		/* Navbar */
-		.navbar {
-			background-color: #1f1f1f !important;
-		}
+        /* Navbar - Kept exact brand styling */
+        .navbar {
+            background-color: #1f1f1f !important;
+            position: relative;
+            z-index: 10;
+        }
 
-		.navbar-brand,
-		.nav-link {
-			color: #f8f9fa !important;
-		}
+        .navbar-brand,
+        .nav-link {
+            color: #f8f9fa !important;
+        }
 
-		.nav-link:hover {
-			color: #ff3d00 !important;
-		}
+        .nav-link:hover {
+            color: #ff3d00 !important;
+        }
 
-		/* Hero Section */
-		.hero {
-			position: relative;
-			background: url(img/fire.jpg) no-repeat;
-			background-size: cover;
-			flex: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			text-align: center;
-			padding: 80px 20px;
-			min-height: 300px;
-		}
+        /* Fixed Background Canvas - Fixed to viewport so it never cuts off or overlaps */
+        .page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/fire.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 35%;
+            z-index: 1;
+        }
 
-		.hero h1 {
-			color: #fff;
-			font-size: 3rem;
-			text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-			margin: 0;
-			z-index: 2;
-			position: relative;
-		}
+        /* Main Content Wrapper - Flows naturally above the background */
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 20px;
+        }
 
-		/* Chapter Grid */
-		.chapter-grid {
-			margin: 50px auto;
-			max-width: 1100px;
-		}
+        .page-header h1 {
+            color: #fff;
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 20px rgba(255,255,255,0.15);
+            margin: 0;
+        }
 
-		.chapter-grid .col {
-			margin-bottom: 15px;
-		}
+        .page-header .tagline {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            font-style: italic;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+        }
 
-		.chapter-grid a {
-			display: block;
-			padding: 20px;
-			background: linear-gradient(45deg, #00ff99, #00cc66);
-			color: #121212;
-			font-weight: bold;
-			text-decoration: none;
-			border-radius: 10px;
-			transition: transform 0.2s, box-shadow 0.2s;
-			text-align: center;
-		}
+        /* Books Container Structure */
+        .books-container {
+            max-width: 750px;
+            width: 100%;
+            margin-top: 50px;
+        }
 
-		.chapter-grid a:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-			color: #fff;
-		}
+        /* Jazzier Glassmorphic Book Modules */
+        .book-card {
+            background: rgba(20, 20, 20, 0.75);
+            border: 1px solid rgba(255, 61, 0, 0.2); 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 61, 0, 0.03);
+        }
 
-		/* Footer */
-		.main-footer {
-			background-color: #1f1f1f;
-			color: #cfcfcf;
-			padding: 40px 20px 20px 20px;
-			font-size: 14px;
-			margin-top: auto;
-		}
+        .book-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.01em;
+        }
 
-		.main-footer a {
-			color: #ff3d00;
-			text-decoration: none;
-		}
+        .book-card p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
 
-		.main-footer a:hover {
-			text-decoration: underline;
-		}
+        /* Custom Ethereal Cyber Buttons */
+        .btn-void {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #00fff0;
+            border: 1px solid rgba(0, 255, 240, 0.3);
+            background: rgba(0, 255, 240, 0.03);
+            padding: 10px 22px;
+            border-radius: 30px;
+            margin-right: 12px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 8px rgba(0, 255, 240, 0.3);
+        }
 
-		.footer-logo {
-			font-size: 1.5rem;
-			font-weight: bold;
-			margin-bottom: 15px;
-			color: #fff;
-		}
+        .btn-void:hover {
+            color: #121212;
+            background: #00fff0;
+            box-shadow: 0 0 20px rgba(0, 255, 240, 0.5);
+            transform: translateY(-2px);
+        }
 
-		.footer-columns {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-		}
+        /* Unfinished/Alternative Warning State Button */
+        .btn-void-alt {
+            color: #ff3d00;
+            border: 1px solid rgba(255, 61, 0, 0.3);
+            background: rgba(255, 61, 0, 0.03);
+            text-shadow: 0 0 8px rgba(255, 61, 0, 0.3);
+        }
 
-		.footer-column {
-			flex: 1;
-			min-width: 200px;
-			margin-bottom: 20px;
-		}
+        .btn-void-alt:hover {
+            color: #ffffff;
+            background: #ff3d00;
+            box-shadow: 0 0 20px rgba(255, 61, 0, 0.5);
+            transform: translateY(-2px);
+        }
 
-		.footer-column p,
-		.footer-column a {
-			margin: 5px 0;
-		}
+        /* Footer - Sits naturally at the end of the content flow */
+        .main-footer {
+            background-color: #1f1f1f;
+            color: #cfcfcf;
+            padding: 40px 20px 20px 20px;
+            font-size: 14px;
+            margin-top: auto;
+            position: relative;
+            z-index: 10;
+        }
 
-		.footer-bottom {
-			border-top: 1px solid #333;
-			padding-top: 15px;
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			font-size: 13px;
-			color: #999;
-		}
+        .main-footer a {
+            color: #ff3d00;
+            text-decoration: none;
+        }
 
-		@media (max-width: 768px) {
-			.hero h1 {
-				font-size: 2rem;
-			}
+        .main-footer a:hover {
+            text-decoration: underline;
+        }
 
-			.footer-bottom {
-				flex-direction: column;
-				align-items: center;
-				text-align: center;
-			}
-		}
-	</style>
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .book-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .btn-void {
+                width: 100%;
+                text-align: center;
+                margin-right: 0;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
-	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg">
-		<div class="container">
-			<a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
 
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="index.html">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="books.html">Writing</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="blog.html">Blog</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="music.html">Music</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="pictures.html">Pictures</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="roguewave.html">Rouge Wave</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="tessa.html">Tessa</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="books.html">Writing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="music.html">Music</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pictures.html">Pictures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="roguewave.html">Rouge Wave</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tessa.html">Tessa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-	<!-- Hero Section -->
-	<section class="hero">
-		<h1>Writing</h1>
-	</section>
+    <!-- Fixed Background Element -->
+    <div class="page-bg"></div>
 
-	<!-- Writing Section -->
-	<section class="container my-5">
+    <!-- Main Scrollable Content Wrapper -->
+    <main class="content-wrapper">
+        <div class="page-header text-center">
+            <h1>MANUSCRIPTS</h1>
+            <p class="tagline">Data streams preserved offline...</p>
+        </div>
 
-		<!-- My Curated Existence -->
-		<div class="mb-5 p-4 rounded" style="background-color:#1f1f1f;">
-			<h2 class="mb-3">My Curated Existence</h2>
-			<p>
-				A dark, cryptic journey.
-			</p>
-			<p>
-				<a href="bookFiles/Grant_Johnson_My_Curated_Existence.docx" class="btn btn-success me-2" target="_blank">Download
-					DocX</a>
-				<a href="bookFiles/Grant_Johnson_My_Curated_Existence.pdf" class="btn btn-success" target="_blank">Download PDF</a>
-			</p>
-		</div>
-		<!-- Allure -->
-		<div class="mb-5 p-4 rounded" style="background-color:#1f1f1f;">
-			<h2 class="mb-3">Allure</h2>
-			<p>
-				A dark, seductive coming-of-age story, <em>Allure</em> pulls you into a world where innocence collides
-				with obsession. Every twist is dripping with tension, and every character leaves a mark you can't
-				forget.
-			</p>
-			<p>
-				<a href="bookFiles/Grant Johnson - Allure.epub" class="btn btn-success me-2" target="_blank">Download
-					EPUB</a>
-				<a href="bookFiles/Grant_Johnson-Allure.pdf" class="btn btn-success" target="_blank">Download PDF</a>
-			</p>
-		</div>
+        <!-- Book modules wrapper -->
+        <div class="books-container">
 
-		<!-- Ghosts of July -->
-		<div class="mb-5 p-4 rounded" style="background-color:#1f1f1f;">
-			<h2 class="mb-3">Ghosts of July</h2>
-			<p>
-				<em>Ghosts of July</em> is a reflective journey back to a hometown haunted by memory, regret, and
-				fleeting connections. It's an atmospheric exploration of nostalgia, where the past whispers in every
-				shadow and turns the ordinary into the uncanny.
-			</p>
-			<p>
-				<a href="bookFiles/Grant_Johnson-Ghosts_Of_July.epub" class="btn btn-primary me-2"
-					target="_blank">Download EPUB</a>
-				<a href="bookFiles/Grant_Johnson-Ghosts_Of_July.pdf" class="btn btn-primary" target="_blank">Download
-					PDF</a>
-			</p>
-		</div>
+            <!-- My Curated Existence -->
+            <div class="book-card">
+                <h2>My Curated Existence</h2>
+                <p>A dark, cryptic journey inside structured observations.</p>
+                <div class="button-group">
+                    <a href="bookFiles/Grant_Johnson_My_Curated_Existence.docx" class="btn-void" target="_blank">Download DocX</a>
+                    <a href="bookFiles/Grant_Johnson_My_Curated_Existence.pdf" class="btn-void" target="_blank">Download PDF</a>
+                </div>
+            </div>
 
-		<!-- Star Treatment -->
-		<div class="mb-5 p-4 rounded" style="background-color:#1f1f1f;">
-			<h2 class="mb-3">Star Treatment (Unfinished)</h2>
-			<p>
-				A chaotic dive into ambition, excess, and the hollowness of fame, <em>Star Treatment</em> is unfinished
-				but raw. It gives a behind-the-curtain glimpse into a world driven by desire and ego, with edges sharp
-				enough to cut through complacency.
-			</p>
-			<p>
-				<a href="bookFiles/Grant Johnson - Star Treatment (Unfinished).epub" class="btn btn-warning me-2"
-					target="_blank">Download EPUB</a>
-				<a href="bookFiles/Grant_Johnson-StarTreatment_Unfinished.pdf" class="btn btn-warning"
-					target="_blank">Download PDF</a>
-			</p>
-		</div>
-	</section>
+            <!-- Allure -->
+            <div class="book-card">
+                <h2>Allure</h2>
+                <p>
+                    A dark, seductive coming-of-age story, <em>Allure</em> pulls you into a world where innocence collides
+                    with obsession. Every twist is dripping with tension, and every character leaves a mark you can't
+                    forget.
+                </p>
+                <div class="button-group">
+                    <a href="bookFiles/Grant Johnson - Allure.epub" class="btn-void" target="_blank">Download EPUB</a>
+                    <a href="bookFiles/Grant_Johnson-Allure.pdf" class="btn-void" target="_blank">Download PDF</a>
+                </div>
+            </div>
 
+            <!-- Ghosts of July -->
+            <div class="book-card">
+                <h2>Ghosts of July</h2>
+                <p>
+                    <em>Ghosts of July</em> is a reflective journey back to a hometown haunted by memory, regret, and
+                    fleeting connections. It's an atmospheric exploration of nostalgia, where the past whispers in every
+                    shadow and turns the ordinary into the uncanny.
+                </p>
+                <div class="button-group">
+                    <a href="bookFiles/Grant_Johnson-Ghosts_Of_July.epub" class="btn-void" target="_blank">Download EPUB</a>
+                    <a href="bookFiles/Grant_Johnson-Ghosts_Of_July.pdf" class="btn-void" target="_blank">Download PDF</a>
+                </div>
+            </div>
 
-	<!-- Footer -->
-	<footer class="main-footer">
-		<div class="footer-columns container">
-			<div class="footer-column">
-				<div class="footer-logo">Fake Info</div>
-				<p>53 Broadway, Brooklyn, NY 11249</p>
-				<p>Phone: (020) 123 456 789</p>
-			</div>
-			<div class="footer-column">
-				<h6>Links</h6>
-				<p><a href="index.html">Home</a></p>
-				<p><a href="blog.html">Blog</a></p>
-				<p><a href="pictures.html">Pictures</a></p>
-				<p><a href="music.html">Music</a></p>
-			</div>
-			<div class="footer-column">
-				<h6>Follow Us</h6>
-				<p><a href="#">Instagram</a></p>
-				<p><a href="#">Twitter</a></p>
-				<p><a href="#">YouTube</a></p>
-			</div>
-		</div>
-		<div class="footer-bottom container">
-			<p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
-			<p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
-		</div>
-	</footer>
+            <!-- Star Treatment -->
+            <div class="book-card">
+                <h2>Star Treatment (Unfinished)</h2>
+                <p>
+                    A chaotic dive into ambition, excess, and the hollowness of fame, <em>Star Treatment</em> is unfinished
+                    but raw. It gives a behind-the-curtain glimpse into a world driven by desire and ego, with edges sharp
+                    enough to cut through complacency.
+                </p>
+                <div class="button-group">
+                    <a href="bookFiles/Grant Johnson - Star Treatment (Unfinished).epub" class="btn-void btn-void-alt" target="_blank">Download EPUB</a>
+                    <a href="bookFiles/Grant_Johnson-StarTreatment_Unfinished.pdf" class="btn-void btn-void-alt" target="_blank">Download PDF</a>
+                </div>
+            </div>
 
-	<!-- Bootstrap 5 JS Bundle -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-bottom container">
+            <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
+            <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

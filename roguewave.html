@@ -5,170 +5,252 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rogue-Wave Philosophy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
     <style>
+        html,
         body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            padding: 40px;
+            height: 100%;
+            margin: 0;
+            /* Dreamy deep-space background */
+            background: radial-gradient(circle at 50% 20%, #1a0b2e 0%, #0a0512 60%, #020105 100%);
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            letter-spacing: 0.03em;
+        }
+
+        /* Navbar - KEPT EXACTLY SAME AS REQUESTED */
+        .navbar {
+            background-color: #1f1f1f !important;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #f8f9fa !important;
+        }
+
+        .nav-link:hover {
+            color: #ff3d00 !important;
+        }
+
+        /* Modernized Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 5rem 1rem 3rem 1rem;
+            position: relative;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            background: linear-gradient(135deg, #ffffff 30%, #a855f7 70%, #00fff0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 0px 40px rgba(168, 85, 247, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        /* Main dream-void content wrapper */
+        .content-container {
             max-width: 800px;
-            margin: auto;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
         }
 
-        h1,
-        h2 {
-            text-align: center;
-            color: #00ffc6;
-        }
-
+        /* Dreamy ethereal text styling */
         p {
-            margin-bottom: 1.5em;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 1.75rem;
+            font-weight: 300;
         }
 
-        em {
-            color: #ff6d00;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.9em;
-            color: #666;
-        }
-
+        /* Voidy highlights */
         .highlight {
-            color: #00ffc6;
+            color: #00fff0;
+            text-shadow: 0 0 12px rgba(0, 255, 240, 0.4);
+            font-weight: 400;
+        }
+
+        /* Widget container responsive styling */
+        .widget-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Custom styled text footer block */
+        .manifesto-tag {
+            width: 100%;
+            overflow: hidden;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .manifesto-tag>span {
+            font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+            font-size: calc(1.2rem + 1.5vw);
+            /* Dynamically scales text so it fits smaller viewports without wrapping */
             font-weight: bold;
+            letter-spacing: 0.15em;
+            white-space: nowrap;
+            /* Prevents text wrapping */
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        /* Base glow effect to make neon colors vibrant against the dark background */
+        .manifesto-tag span span {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1), 0 0 20px currentColor;
         }
     </style>
 </head>
 
 <body>
-      <!-- <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">SHOCK.THE.SYSTEM.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="books.html">Writing</a></li>
-          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="music.html">Music</a></li>
-          <li class="nav-item"><a class="nav-link" href="pictures.html">Pictures</a></li>
-          <li class="nav-item"><a class="nav-link" href="roguewave.html">Rouge Wave</a></li>
-          <li class="nav-item"><a class="nav-link active" href="tessa.html">Tessa</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="books.html">Writing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="music.html">Music</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pictures.html">Pictures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="roguewave.html">Rouge Wave</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tessa.html">Tessa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <h1>Rogue-Wave Philosophy</h1>
-    
-    <p>In this world, you are the only one you can count on. <span class="highlight">Remember that.</span> </p>
-    <p>When you realize you don't know shit, the sooner you're gonna <span class="highlight">grow.</span> </p>
+    <header class="hero-section">
+        <div class="container">
+            <h1>Rogue-Wave Philosophy</h1>
+        </div>
+    </header>
 
-    <p>Decentralization is the <span class="highlight">only way forward.</span> It’s not a possible <span class="highlight">way</span>. It is the <span class="highlight">only</span> way.</p>
+    <main class="content-container">
+        <p>In this world, you are the only one you can count on. <span class="highlight">Remember that.</span></p>
 
-    <p>You must first understand this: no matter the ideology, power will <span class="highlight">never</span> give up power voluntarily. Power can never be <span class="highlight">given</span>. It must be taken, earned, or bypassed.</p>
+        <p>When you realize you don't know shit, the sooner you're gonna <span class="highlight">grow.</span></p>
 
-    <p>Start today. Get some <span class="highlight">Bitcoin</span>. Install a <span class="highlight">Linux operating system</span>.</p>
+        <p>Decentralization is the <span class="highlight">only way forward.</span> It’s not a possible <span
+                class="highlight">way</span>. It is the <span class="highlight">only</span> way.</p>
 
-    <p>Swim in the waters of <span class="highlight">open-source software</span>. Ride the <span class="highlight">wave</span>. Own your currents.</p>
+        <p>You must first understand this: no matter the ideology, power will <span class="highlight">never</span> give
+            up power voluntarily. Power can never be <span class="highlight">given</span>. It must be taken, earned, or
+            bypassed.</p>
 
-    <p>
-        Life moves in currents. Most people ride the obvious ones, following the crowd, reacting to every wave of panic
-        or hype. I watch. I wait. I move when it matters.
-    </p>
+        <p>Start today. Get some <span class="highlight">Bitcoin</span>. Install a <span class="highlight">Linux
+                operating system</span>.</p>
 
-    <p>
-        It’s not about being better than anyone. It’s about being <em>deliberate</em>. Seeing the patterns that others
-        ignore and conserving your energy for the moments that count.
-    </p>
+        <p>Swim in the waters of <span class="highlight">open-source software</span>. Ride the <span
+                class="highlight">wave</span>. Own your currents.</p>
 
-    <p>
-        Quit the arguments. Quit the debates. People will believe what they want to believe until they don't.
-    </p>
-    <p>
-        AI feels like a disease on humanity now, only feeding into more noise and distraction.
-    </p>
-    <p>
-        Bitcoin crashing? Everyone screams “scam!” Bitcoin soars? Everyone screams “bubble!” I don’t care. Doesn't matter to me one bit. Numbers on a
-        screen don’t dictate my worth. The only thing that matters is what I control, and the principles I follow.
-    </p>
-    <p>
-<script src="https://widgets.coingecko.com/gecko-coin-price-chart-widget.js"></script>
-<gecko-coin-price-chart-widget locale="en" dark-mode="true" outlined="true" initial-currency="usd"></gecko-coin-price-chart-widget>
+        <p>
+            Life moves in currents. Most people ride the obvious ones, following the crowd, reacting to every wave of
+            panic
+            or hype. I watch. I wait. I move when it matters.
+        </p>
 
-    </p>
+        <p>
+            It’s not about being better than anyone. It’s about being <em>deliberate</em>. Seeing the patterns that
+            others
+            ignore and conserving your energy for the moments that count.
+        </p>
 
-    <p>
-        I’ve deleted social media.  🐦📘📸🎵📺💬🚪🗑️🕶️🌌 Fuck all that noise. I don’t need validation, attention, or spectacle. I linger in
-        the rafters until the
-        timing is right. I move in the darkness. I move between the crowd in silence.......waiting. I act when my moment
-        arrives, not before and not after. Sometimes less is more. Billionaires aren't going to make money off my work. Grifters won't tell me who to be.
-    </p>
+        <p>
+            Quit the arguments. Quit the debates. People will believe what they want to believe until they don't.
+        </p>
 
-    <p>
-        This is the rogue-wave life: <span class="highlight">observe, conserve, act with clarity</span>. Not reactive.
-        Not performative. Not attached to outcome. Just present, aligned, and ready.
-    </p>
+        <p>
+            AI feels like a disease on humanity now, only feeding into more noise and distraction.
+        </p>
 
-    <p>
-        You won’t always see it. Most won’t understand it. And that’s fine. I don’t need applause. I don’t need the
-        crowd. I just need to ride the currents I choose and survive the ones I can’t. That’s enough.
-    </p>
+        <p>
+            Bitcoin crashing? Everyone screams “scam!” Bitcoin soars? Everyone screams “bubble!” I don’t care. Doesn't
+            matter to me one bit. Numbers on a
+            screen don’t dictate my worth. The only thing that matters is what I control, and the principles I follow.
+        </p>
 
-    <p>
-        I'm always evolving, and so this page will evolve too.
-    </p>
-    <p>
-        <span class="highlight">
-<span style="color:#00fff0;">C</span>
-<span style="color:#ff00ff;">O</span>
-<span style="color:#9b4dff;">N</span>
-<span style="color:#00cfc5;">T</span>
-<span style="color:#ff6ec7;">R</span>
-<span style="color:#6a0dad;">O</span>
-<span style="color:#00fff0;">L</span>
-<span style="color:#ff00ff;">.</span>
-<span style="color:#9b4dff;">T</span>
-<span style="color:#00cfc5;">H</span>
-<span style="color:#ff6ec7;">E</span>
-<span style="color:#6a0dad;">.</span>
-<span style="color:#00fff0;">M</span>
-<span style="color:#ff00ff;">O</span>
-<span style="color:#9b4dff;">N</span>
-<span style="color:#00cfc5;">E</span>
-<span style="color:#ff6ec7;">Y</span>
-<span style="color:#6a0dad;">.</span>
-<span style="color:#00fff0;">C</span>
-<span style="color:#ff00ff;">O</span>
-<span style="color:#9b4dff;">N</span>
-<span style="color:#00cfc5;">T</span>
-<span style="color:#ff6ec7;">R</span>
-<span style="color:#6a0dad;">O</span>
-<span style="color:#00fff0;">L</span>
-<span style="color:#ff00ff;">.</span>
-<span style="color:#9b4dff;">T</span>
-<span style="color:#00cfc5;">H</span>
-<span style="color:#ff6ec7;">E</span>
-<span style="color:#6a0dad;">.</span>
-<span style="color:#00fff0;">W</span>
-<span style="color:#ff00ff;">O</span>
-<span style="color:#9b4dff;">R</span>
-<span style="color:#00cfc5;">L</span>
-<span style="color:#ff6ec7;">D</span>
-<span style="color:#6a0dad;">.</span>
-</span>
+        <div class="widget-box">
+            <script src="https://widgets.coingecko.com/gecko-coin-price-chart-widget.js"></script>
+            <gecko-coin-price-chart-widget locale="en" dark-mode="true" outlined="true"
+                initial-currency="usd"></gecko-coin-price-chart-widget>
+        </div>
 
-    </p>
+        <p>
+            I’ve deleted social media. 🐦📘📸🎵📺💬🚪🗑️🕶️🌌 Fuck all that noise. I don’t need validation, attention,
+            or spectacle. I linger in
+            the rafters until the timing is right. I move in the darkness. I move between the crowd in
+            silence.......waiting. I act when my moment
+            arrives, not before and not after. Sometimes less is more. Billionaires aren't going to make money off my
+            work. Grifters won't tell me who to be.
+        </p>
 
+        <p>
+            This is the rogue-wave life: <span class="highlight">observe, conserve, act with clarity</span>. Not
+            reactive.
+            Not performative. Not attached to outcome. Just present, aligned, and ready.
+        </p>
 
+        <p>
+            You won’t always see it. Most won’t understand it. And that’s fine. I don’t need applause. I don’t need the
+            crowd. I just need to ride the currents I choose and survive the ones I can’t. That’s enough.
+        </p>
+
+        <p>
+            I'm always evolving, and so this page will evolve too.
+        </p>
+
+        <!-- <div class="manifesto-tag">
+            <span>
+                <span style="color:#00ffff;">H</span>
+                <span style="color:#ff007f;">E</span>
+                <span style="color:#9d00ff;">L</span>
+                <span style="color:#00ffcc;">L</span>
+                <span style="color:#ff00ff;">O</span>
+                <span style="color:#bc00ff;">...</span>
+                <span style="color:#00ffcc;"></span>
+                <span style="color:#00ffff;">Y</span>
+                <span style="color:#ff007f;">O</span>
+                <span style="color:#9d00ff;">U</span>
+
+            </span> -->
+        </div>
+    </main>
 </body>
 
 </html>

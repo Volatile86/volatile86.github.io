@@ -20,9 +20,10 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       flex-direction: column;
+      letter-spacing: 0.03em;
     }
 
-    /* Navbar */
+    /* Navbar - Kept exact brand styling */
     .navbar {
       background-color: #1f1f1f !important;
     }
@@ -36,44 +37,114 @@
       color: #ff3d00 !important;
     }
 
-    /* Hero Section */
+    /* Unified Hero Wrapper - Now acts as the page background canvas */
     .hero {
-      position: relative;
-      background: url(img/fire.jpg) no-repeat;
+      background-image: url(img/fire.jpg);
+      background-repeat: no-repeat;
       background-size: cover;
-      flex: 1;
+      background-position: center 35%;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      text-align: center;
+      justify-content: flex-start;
       padding: 80px 20px;
-      min-height: 300px;
+      min-height: calc(100vh - 56px); /* Fills the viewport up completely */
+      flex: 1;
     }
 
     .hero h1 {
       color: #fff;
-      font-size: 3rem;
-      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 20px rgba(255,255,255,0.15);
       margin: 0;
-      z-index: 2;
-      position: relative;
     }
 
-    /* Blog Posts */
+    .hero .tagline {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      font-style: italic;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* Jazzier Glassmorphic Blog Posts */
+    .blog-container {
+      max-width: 750px;
+      width: 100%;
+      margin-top: 50px; /* Clean spacing instead of negative margins */
+      position: relative;
+      z-index: 3;
+    }
+
     .blog-post {
-      background-color: rgba(31, 31, 31, 0.85);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+      background: rgba(20, 20, 20, 0.75);
+      border: 1px solid rgba(255, 61, 0, 0.2); 
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      margin-bottom: 40px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 61, 0, 0.03);
+    }
+
+    .blog-post-meta {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 15px;
+      margin-bottom: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .blog-post-badge {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: #ff3d00;
+      font-weight: 600;
+    }
+
+    .blog-post-date {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+      font-family: monospace;
     }
 
     .blog-post h3 {
-      color: #ff3d00;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
     }
 
     .blog-post p {
-      color: #f8f9fa;
+      color: #cbd5e1;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-post p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Voidy text highlights */
+    .highlight-cyan {
+      color: #00fff0;
+      text-shadow: 0 0 15px rgba(0,255,240,0.2);
+      font-weight: 400;
+    }
+
+    .highlight-red {
+      color: #ef4444;
+      font-style: italic;
     }
 
     /* Footer */
@@ -94,30 +165,6 @@
       text-decoration: underline;
     }
 
-    .footer-logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-      color: #fff;
-    }
-
-    .footer-columns {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    .footer-column {
-      flex: 1;
-      min-width: 200px;
-      margin-bottom: 20px;
-    }
-
-    .footer-column p,
-    .footer-column a {
-      margin: 5px 0;
-    }
-
     .footer-bottom {
       border-top: 1px solid #333;
       padding-top: 15px;
@@ -131,7 +178,11 @@
     /* Responsive tweaks */
     @media (max-width: 768px) {
       .hero h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+      }
+
+      .blog-post {
+        padding: 2rem 1.5rem;
       }
 
       .footer-bottom {
@@ -150,7 +201,7 @@
       <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -181,59 +232,33 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (Now fully wraps the content so the image never breaks) -->
   <section class="hero">
-    <h1>Blog</h1>
-  </section>
-
-  <!-- Blog Posts -->
-  <section class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 col-md-10">
-        <div class="blog-post">
-          <h3>This is the first blog post</h3>
-          <p><em>Date: July 15, 2023</em></p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lacinia eleifend. Fusce ac justo
-            sed velit malesuada accumsan id id lacus. Aenean ut placerat orci, vitae hendrerit erat. Pellentesque
-            interdum venenatis libero in iaculis. Vivamus sit amet bibendum nulla, id gravida velit. Donec imperdiet
-            eros eu tellus auctor hendrerit. Nullam iaculis, tellus ac suscipit cursus, lorem orci pulvinar turpis,
-            eu commodo ipsum turpis eu erat. Sed suscipit elit vel risus rhoncus, nec ullamcorper massa posuere.</p>
-        </div>
-
-        <!-- Example: additional blog posts -->
-        <div class="blog-post">
-          <h3>Another blog post</h3>
-          <p><em>Date: August 10, 2023</em></p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lacinia eleifend. Fusce ac justo sed
-            velit malesuada accumsan id id lacus. Aenean ut placerat orci, vitae hendrerit erat.</p>
-        </div>
-      </div>
+    <div class="text-center">
+      <h1>LOG.ENTRIES</h1>
+      <p class="tagline">Thoughts from the rafters...</p>
     </div>
+
+    <!-- Blog Posts inside the hero canvas -->
+    <main class="blog-container">
+      
+      <!-- Post 2 -->
+      <div class="blog-post">
+        <div class="blog-post-meta">
+          <div class="blog-post-badge">LOG // 002</div>
+          <div class="blog-post-date">DATE: JUNE 24, 2026</div>
+        </div>
+        <h3>The Architecture of Silence</h3>
+        <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400;">
+         We're now afraid to say what we're thinking. What kind of freedom is that?
+        </p>
+      </div>
+
+    </main>
   </section>
 
   <!-- Footer -->
   <footer class="main-footer">
-    <div class="footer-columns container">
-      <div class="footer-column">
-        <div class="footer-logo">Fake Info</div>
-        <p>53 Broadway, Brooklyn, NY 11249</p>
-        <p>Phone: (020) 123 456 789</p>
-        <p>Email: info@example.com</p>
-      </div>
-      <div class="footer-column">
-        <h6>Links</h6>
-        <p><a href="index.html">Home</a></p>
-        <p><a href="blog.html">Blog</a></p>
-        <p><a href="pictures.html">Pictures</a></p>
-        <p><a href="music.html">Music</a></p>
-      </div>
-      <div class="footer-column">
-        <h6>Follow Us</h6>
-        <p><a href="#">Instagram</a></p>
-        <p><a href="#">Twitter</a></p>
-        <p><a href="#">YouTube</a></p>
-      </div>
-    </div>
     <div class="footer-bottom container">
       <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
       <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>

@@ -11,19 +11,23 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
+        html,
         body {
+            height: 100%;
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
             background-color: #121212;
+            color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            letter-spacing: 0.03em;
         }
 
-        /* Navbar */
+        /* Navbar - Kept exact brand styling */
         .navbar {
             background-color: #1f1f1f !important;
+            position: relative;
+            z-index: 10;
         }
 
         .navbar-brand,
@@ -35,54 +39,115 @@
             color: #ff3d00 !important;
         }
 
-        /* Hero Section */
-        .hero {
-            background: url(img/fire.jpg) no-repeat;
+        /* Fixed Background Canvas - Fixed to viewport so it never cuts off or overlaps */
+        .page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/fire.jpg);
+            background-repeat: no-repeat;
             background-size: cover;
+            background-position: center 35%;
+            z-index: 1;
+        }
+
+        /* Main Content Wrapper - Flows naturally above the background */
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
             flex: 1;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            text-align: center;
             padding: 80px 20px;
-            min-height: 300px;
         }
 
-        .hero h1 {
+        .page-header h1 {
             color: #fff;
-            font-size: 3rem;
-            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 20px rgba(255,255,255,0.15);
             margin: 0;
-            z-index: 2;
-            position: relative;
         }
 
-        /* Album cards */
+        .page-header .tagline {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            font-style: italic;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        /* Music Display Container */
+        .music-container {
+            max-width: 900px;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        /* Glassmorphic Media Modules */
+        .album-card {
+            background: rgba(20, 20, 20, 0.75);
+            border: 1px solid rgba(255, 61, 0, 0.15); 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 61, 0, 0.03);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .album-card:hover {
+            border-color: rgba(255, 61, 0, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 61, 0, 0.08);
+        }
+
+        /* Album Covers */
         .album-card img {
-            max-height: 300px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-            transition: transform 0.2s, box-shadow 0.2s;
+            max-height: 280px;
+            width: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .album-card img:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        .album-card a:hover img {
+            transform: scale(1.03);
         }
 
         .album-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 1.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .album-meta {
+            font-size: 0.8rem;
+            font-family: monospace;
+            color: #ff3d00;
+            margin-top: 0.25rem;
+            letter-spacing: 0.2em;
         }
 
-        /* Footer */
+        /* Footer - Sits naturally at the end of the content flow */
         .main-footer {
             background-color: #1f1f1f;
             color: #cfcfcf;
             padding: 40px 20px 20px 20px;
             font-size: 14px;
             margin-top: auto;
+            position: relative;
+            z-index: 10;
         }
 
         .main-footer a {
@@ -92,30 +157,6 @@
 
         .main-footer a:hover {
             text-decoration: underline;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .footer-columns {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-            margin-bottom: 20px;
-        }
-
-        .footer-column p,
-        .footer-column a {
-            margin: 5px 0;
         }
 
         .footer-bottom {
@@ -128,9 +169,18 @@
             color: #999;
         }
 
+        /* Responsive tweaks */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+            .page-header h1 {
+                font-size: 2.3rem;
+            }
+
+            .album-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .album-card img {
+                max-height: 220px;
             }
 
             .footer-bottom {
@@ -149,87 +199,79 @@
             <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="books.html">Writing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="blog.html">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="music.html">Music</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pictures.html">Pictures</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="roguewave.html">Rouge Wave</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="tessa.html">Tessa</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="books.html">Writing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="music.html">Music</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pictures.html">Pictures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="roguewave.html">Rouge Wave</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tessa.html">Tessa</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Music: Up Into Dreams</h1>
-    </section>
+    <!-- Fixed Background Element -->
+    <div class="page-bg"></div>
 
-    <!-- Album Section -->
-    <div class="container my-5">
-        <div class="row justify-content-center align-items-center">
-
-            <div class="col-12 col-md-6 text-center album-card mb-4 mb-md-0">
-                <a href="/musicPages/determinism.html">
-                    <img src="/music/upintodreams/determinism/cover.jpeg"
-                        alt="Determinism Cover" class="img-fluid">
-                </a>
-                <div class="album-title">Determinism (2025)</div>
-            </div>
-
-            <div class="col-12 col-md-6 text-center album-card">
-                <a href="/musicPages/cesthorrifique.html">
-                    <img src="/music/upintodreams/cesthorrifique/cover.jpeg"
-                        alt="C'est Horrifique Cover" class="img-fluid">
-                </a>
-                <div class="album-title">C'est Horrifique (2021)</div>
-            </div>
-
+    <!-- Main Scrollable Content Wrapper -->
+    <main class="content-wrapper">
+        <div class="page-header text-center">
+            <h1>UP.INTO.DREAMS</h1>
+            <p class="tagline">Audio frequencies archived here...</p>
         </div>
-    </div>
+
+        <!-- Album Grid Container -->
+        <div class="container music-container">
+            <div class="row justify-content-center">
+
+                <!-- Album: Determinism -->
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="album-card text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                        <a href="/musicPages/determinism.html">
+                            <img src="/music/upintodreams/determinism/cover.jpeg" alt="Determinism Cover" class="img-fluid">
+                        </a>
+                        <div class="album-title">Determinism</div>
+                        <div class="album-meta">RELEASE // 2025</div>
+                    </div>
+                </div>
+
+                <!-- Album: C'est Horrifique -->
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="album-card text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                        <a href="/musicPages/cesthorrifique.html">
+                            <img src="/music/upintodreams/cesthorrifique/cover.jpeg" alt="C'est Horrifique Cover" class="img-fluid">
+                        </a>
+                        <div class="album-title">C'est Horrifique</div>
+                        <div class="album-meta">RELEASE // 2021</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
 
     <!-- Footer -->
     <footer class="main-footer">
-        <div class="footer-columns container">
-            <div class="footer-column">
-                <div class="footer-logo">Fake Info</div>
-                <p>53 Broadway, Brooklyn, NY 11249</p>
-                <p>Phone: (020) 123 456 789</p>
-            </div>
-            <div class="footer-column">
-                <h6>Links</h6>
-                <p><a href="index.html">Home</a></p>
-                <p><a href="blog.html">Blog</a></p>
-                <p><a href="pictures.html">Pictures</a></p>
-                <p><a href="music.html">Music</a></p>
-            </div>
-            <div class="footer-column">
-                <h6>Follow Us</h6>
-                <p><a href="#">Instagram</a></p>
-                <p><a href="#">Twitter</a></p>
-                <p><a href="#">YouTube</a></p>
-            </div>
-        </div>
         <div class="footer-bottom container">
             <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
             <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
