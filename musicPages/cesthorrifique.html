@@ -13,236 +13,239 @@
     <!-- Howler.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    min-height: 100vh;
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            min-height: 100vh;
 
-    /* layered background */
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,61,0,0.15), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(0,150,255,0.12), transparent 40%),
-        linear-gradient(180deg,#0a0a0a,#121212,#0a0a0a);
+            /* layered background */
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 61, 0, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 150, 255, 0.12), transparent 40%),
+                linear-gradient(180deg, #0a0a0a, #121212, #0a0a0a);
 
-    display: flex;
-    flex-direction: column;
-}
+            display: flex;
+            flex-direction: column;
+        }
 
-/* Navbar */
-.navbar {
-    background-color: rgba(20,20,20,0.85) !important;
-    backdrop-filter: blur(6px);
-}
+        /* Navbar */
+        .navbar {
+            background-color: rgba(20, 20, 20, 0.85) !important;
+            backdrop-filter: blur(6px);
+        }
 
-.navbar-brand,
-.nav-link {
-    color: #f8f9fa !important;
-}
+        .navbar-brand,
+        .nav-link {
+            color: #f8f9fa !important;
+        }
 
-.nav-link:hover {
-    color: #ff3d00 !important;
-}
+        .nav-link:hover {
+            color: #ff3d00 !important;
+        }
 
-/* Hero */
-.hero {
-    background: url('/music/upintodreams/cesthorrifique/cover.jpeg') no-repeat center center;
-    background-size: cover;
-    position: relative;
-    padding: 140px 20px;
-}
+        /* Hero */
+        .hero {
+            background: url('/music/upintodreams/cesthorrifique/cover.jpeg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            padding: 140px 20px;
+        }
 
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,.9));
-}
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .9));
+        }
 
-.hero h1 {
-    position: relative;
-    z-index: 2;
-    font-size: 3rem;
-    text-shadow: 0 0 20px rgba(255,61,0,0.6);
-}
+        .hero h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 3rem;
+            text-shadow: 0 0 20px rgba(255, 61, 0, 0.6);
+        }
 
-/* PLAYER WRAPPER */
-.player-container {
-    max-width: 750px;
-    margin: -80px auto 60px auto;
-    padding: 40px;
+        /* PLAYER WRAPPER */
+        .player-container {
+            max-width: 750px;
+            margin: -80px auto 60px auto;
+            padding: 40px;
 
-    background: rgba(20,20,20,0.85);
-    border-radius: 16px;
+            background: rgba(20, 20, 20, 0.85);
+            border-radius: 16px;
 
-    backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
 
-    box-shadow:
-        0 0 30px rgba(0,0,0,.7),
-        0 0 60px rgba(255,61,0,.08);
+            box-shadow:
+                0 0 30px rgba(0, 0, 0, .7),
+                0 0 60px rgba(255, 61, 0, .08);
 
-    text-align: center;
-}
+            text-align: center;
+        }
 
-/* Visualizer */
-#visualizer {
-    width: 100%;
-    height: 130px;
-    border-radius: 10px;
-    background: #0c0c0c;
-    margin-bottom: 25px;
-    box-shadow: inset 0 0 25px rgba(0,0,0,.8);
-}
+        /* Visualizer */
+        #visualizer {
+            width: 100%;
+            height: 130px;
+            border-radius: 10px;
+            background: #0c0c0c;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 25px rgba(0, 0, 0, .8);
+        }
 
-/* Song List */
-.song-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
+        /* Song List */
+        .song-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
 
-.song-list li {
-    padding: 10px 14px;
-    margin: 6px 0;
-    border-radius: 10px;
+        .song-list li {
+            padding: 10px 14px;
+            margin: 6px 0;
+            border-radius: 10px;
 
-    background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.02);
 
-    cursor: pointer;
+            cursor: pointer;
 
-    transition: all .2s ease;
-}
+            transition: all .2s ease;
+        }
 
-.song-list li:hover {
-    background: linear-gradient(90deg,#ff3d00,#ff6a00);
-    transform: translateX(6px);
-}
+        .song-list li:hover {
+            background: linear-gradient(90deg, #ff3d00, #ff6a00);
+            transform: translateX(6px);
+        }
 
-/* Buttons */
-.player-buttons button {
-    margin: 6px;
-    border-radius: 25px;
-    padding: 8px 20px;
-}
+        /* Buttons */
+        .player-buttons button {
+            margin: 6px;
+            border-radius: 25px;
+            padding: 8px 20px;
+        }
 
-.btn-primary {
-    background: linear-gradient(45deg,#ff3d00,#ff6a00);
-    border: none;
-}
+        .btn-primary {
+            background: linear-gradient(45deg, #ff3d00, #ff6a00);
+            border: none;
+        }
 
-.btn-danger {
-    background: linear-gradient(45deg,#ff003c,#ff5c5c);
-    border: none;
-}
+        .btn-danger {
+            background: linear-gradient(45deg, #ff003c, #ff5c5c);
+            border: none;
+        }
 
-/* Download button */
-.btn-lg {
-    margin-top: 10px;
-}
+        /* Download button */
+        .btn-lg {
+            margin-top: 10px;
+        }
 
-/* Footer */
-.main-footer {
-    background: #0f0f0f;
-    color: #cfcfcf;
-    padding: 40px 20px 20px 20px;
-    font-size: 14px;
-    margin-top: auto;
-}
+        /* Footer */
+        .main-footer {
+            background: #0f0f0f;
+            color: #cfcfcf;
+            padding: 40px 20px 20px 20px;
+            font-size: 14px;
+            margin-top: auto;
+        }
 
-.main-footer a {
-    color: #ff3d00;
-}
+        .main-footer a {
+            color: #ff3d00;
+        }
 
-.main-footer a:hover {
-    text-decoration: underline;
-}
+        .main-footer a:hover {
+            text-decoration: underline;
+        }
 
-.footer-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
-.footer-columns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
+        .footer-columns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-.footer-column {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 20px;
-}
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
 
-.footer-bottom {
-    border-top: 1px solid #333;
-    padding-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    font-size: 13px;
-    color: #999;
-}
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: #999;
+        }
 
-/* Mobile */
-@media (max-width:768px) {
+        /* Mobile */
+        @media (max-width:768px) {
 
-    .hero h1 {
-        font-size: 2rem;
-    }
+            .hero h1 {
+                font-size: 2rem;
+            }
 
-    .player-container {
-        margin: -60px 15px 40px 15px;
-        padding: 30px;
-    }
+            .player-container {
+                margin: -60px 15px 40px 15px;
+                padding: 30px;
+            }
 
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-</style>
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../books.html">Writing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../blog.html">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../music.html">Music</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pictures.html">Pictures</a>
-          </li>
-          <!-- <li class="nav-item">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../books.html">Writing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../music.html">Music</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pictures.html">Pictures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="crunch.html">Crunch</a>
+                    </li>
+                    <!-- <li class="nav-item">
             <a class="nav-link" href="../roguewave.html">Rouge Wave</a>
           </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="../tessa.html">Tessa</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../tessa.html">Tessa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- Hero Section -->
     <section class="hero">
         <h1>Music: C'est Horrifique</h1>
