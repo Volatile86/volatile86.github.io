@@ -13,7 +13,8 @@
   <style>
     html,
     body {
-      height: 100%;
+      min-height: 100vh;
+      /* Changed from height: 100% */
       margin: 0;
       background-color: #121212;
       color: #f8f9fa;
@@ -240,17 +241,39 @@
   <!-- Hero Section (Now fully wraps the content so the image never breaks) -->
   <section class="hero">
     <div class="text-center">
-      <h1>LOG.ENTRIES</h1>
-      <p class="tagline">Thoughts from the rafters...</p>
+      <h1>BLOG.</h1>
+      <p class="tagline">Thoughts from nobody...</p>
     </div>
 
     <!-- Blog Posts inside the hero canvas -->
     <main class="blog-container">
 
-      <!-- Post 2 -->
+      <!-- Post 1 -->
       <div class="blog-post">
         <div class="blog-post-meta">
           <div class="blog-post-badge">LOG // 002</div>
+          <div class="blog-post-date">DATE: JULY 17, 2026</div>
+        </div>
+        <h3>Autopsy of Failure</h3>
+        <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400;">
+          I've thought a lot about why SHOCK.THE.SYSTEM. 1.0 failed. I think the biggest thing is that it wasn't an
+          "APP". You couldn't just click on it on your phone, you had to make an effort to go out to the site. What
+          happened to us? When did curiosity get thrown away? That used to be what the internet was all about,
+          discovering something cool. Now it's more about being fed content through an algorithm. A company TELLS you
+          what you need to see. They feed you ads based on how you interact with the infinite scroll. I think another
+          thing I learned is that people don't actually want to curate and create something of their own anymore, they
+          want to be drip fed dopamine. They want to feed on the outrage and whatever the latest culture war is. The
+          Myspace days where you created your own little slice of the internet doesn't really matter to people anymore.
+          I don't know. I spent a lot of time creating that site from scratch, and here I am ditching it. Maybe I can
+          turn it into something else later, but since I was the only one using it, what was the point of keeping it
+          around?
+        </p>
+      </div>
+
+      <!-- Post 1 -->
+      <div class="blog-post">
+        <div class="blog-post-meta">
+          <div class="blog-post-badge">LOG // 001</div>
           <div class="blog-post-date">DATE: JUNE 24, 2026</div>
         </div>
         <h3>The Architecture of Silence</h3>
