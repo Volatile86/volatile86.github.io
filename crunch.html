@@ -13,7 +13,8 @@
   <style>
     html,
     body {
-      height: 100%;
+      min-height: 100vh;
+      /* Fixed: Changed from height: 100% to prevent footer overlap */
       margin: 0;
       background-color: #121212;
       color: #f8f9fa;
@@ -57,7 +58,7 @@
     .content-wrapper {
       position: relative;
       z-index: 2;
-      flex: 1;
+      flex: 1 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -85,7 +86,8 @@
 
     /* Picture Display Container */
     .picture-container {
-      max-width: 600px;
+      max-width: 850px;
+      /* Increased from 600px to make images larger and easier to read */
       width: 100%;
       margin-top: 50px;
     }
@@ -215,9 +217,6 @@
           <li class="nav-item">
             <a class="nav-link" href="crunch.html">Crunch</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="roguewave.html">Rouge Wave</a>
-          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="tessa.html">Tessa</a>
           </li>
@@ -233,15 +232,13 @@
   <main class="content-wrapper">
     <div class="page-header text-center">
       <h1>CUBICLE.CRUNCH.</h1>
-      <p class="tagline">Laugh off the dispair...</p>
+      <p class="tagline">Laugh off the despair...</p>
     </div>
 
     <!-- Container for Content Modules -->
     <div class="container picture-container">
-      <div class="media-card text-center">
-        <img src="img/cubicleCrunch/1.jpg" alt="CrunchOne" class="img-fluid">
-        <div class="media-caption">Issue #1</div>
-      </div>
+      <!-- Flex column wrapper with a Bootstrap gap-5 layout -->
+      <div id="issues-grid" class="d-flex flex-column gap-5"></div>
     </div>
   </main>
 
@@ -257,6 +254,22 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+  <!-- Script to Dynamically Render Comic Issues (Newest First) -->
+  <script>
+    const container = document.getElementById('issues-grid');
+    const totalIssues = 16;
+
+    // Start at 16, loop down to 1
+    for (let i = totalIssues; i >= 1; i--) {
+      container.innerHTML += `
+        <div class="media-card text-center">
+          <img src="img/cubicleCrunch/${i}.jpg" alt="Crunch Issue ${i}" class="img-fluid" loading="lazy">
+          <div class="media-caption">Issue #${i}</div>
+        </div>
+      `;
+    }
+  </script>
 </body>
 
 </html>
