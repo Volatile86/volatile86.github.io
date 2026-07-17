@@ -30,7 +30,7 @@
             flex-direction: column;
         }
 
-        /* Navbar */
+        /* Navbar Styling */
         .navbar {
             background-color: rgba(20, 20, 20, 0.85) !important;
             backdrop-filter: blur(6px);
@@ -43,6 +43,11 @@
 
         .nav-link:hover {
             color: #ff3d00 !important;
+        }
+
+        /* Custom override to force the toggle icon border to blend nicely if you want */
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.1) !important;
         }
 
         /* Hero */
@@ -136,11 +141,6 @@
             border: none;
         }
 
-        /* Download button */
-        .btn-lg {
-            margin-top: 10px;
-        }
-
         /* Footer */
         .main-footer {
             background: #0f0f0f;
@@ -158,24 +158,6 @@
             text-decoration: underline;
         }
 
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .footer-columns {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-            margin-bottom: 20px;
-        }
-
         .footer-bottom {
             border-top: 1px solid #333;
             padding-top: 15px;
@@ -186,8 +168,11 @@
             color: #999;
         }
 
-        /* Mobile */
+        /* Mobile Adjustments */
         @media (max-width:768px) {
+            .hero {
+                padding: 100px 20px 80px 20px; /* Aligns with home hero adjustments to clear navbar */
+            }
 
             .hero h1 {
                 font-size: 2rem;
@@ -201,14 +186,15 @@
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
+                gap: 10px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
+    <!-- Navbar (Added .navbar-dark class here) -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -219,39 +205,37 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="/index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
+                        <a class="nav-link" href="/blog.html">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="books.html">Writing</a>
+                        <a class="nav-link" href="/books.html">Writing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="vids.html">Vids</a>
+                        <a class="nav-link" href="/vids.html">Vids</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="music.html">Music</a>
+                        <a class="nav-link" href="/music.html">Music</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pictures.html">Pictures</a>
+                        <a class="nav-link" href="/pictures.html">Pictures</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="films.html">Films</a>
+                        <a class="nav-link" href="/films.html">Films</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="crunch.html">Crunch</a>
+                        <a class="nav-link" href="/crunch.html">Crunch</a>
                     </li>
-                    <!-- <li class="nav-item">
-            <a class="nav-link" href="../roguewave.html">Rouge Wave</a>
-          </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="../tessa.html">Tessa</a>
+                        <a class="nav-link" href="/tessa.html">Tessa</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <!-- Hero Section -->
     <section class="hero">
         <h1>Music: C'est Horrifique</h1>
@@ -284,14 +268,6 @@
             <button class="btn btn-primary" onclick="playNextSong()">Play Next Song</button>
             <button class="btn btn-danger" onclick="stopSong()">Stop</button>
         </div>
-
-        <!-- Download -->
-        <!-- <div class="mt-4">
-            <a href="music/upintodreams/determinism/UpIntoDreams-Determinism.zip"
-                class="btn btn-lg btn-primary shadow-lg rounded-pill px-4" download>
-                Download "Determinism"
-            </a>
-        </div> -->
     </div>
 
     <!-- Footer -->
