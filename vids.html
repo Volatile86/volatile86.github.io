@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Music: Up Into Dreams - SHOCK.THE.SYSTEM.</title>
+    <title>Blog - SHOCK.THE.SYSTEM.</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,7 +13,8 @@
     <style>
         html,
         body {
-            height: 100%;
+            min-height: 100vh;
+            /* Changed from height: 100% */
             margin: 0;
             background-color: #121212;
             color: #f8f9fa;
@@ -26,8 +27,6 @@
         /* Navbar - Kept exact brand styling */
         .navbar {
             background-color: #1f1f1f !important;
-            position: relative;
-            z-index: 10;
         }
 
         .navbar-brand,
@@ -39,32 +38,23 @@
             color: #ff3d00 !important;
         }
 
-        /* Fixed Background Canvas - Fixed to viewport so it never cuts off or overlaps */
-        .page-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        /* Unified Hero Wrapper - Now acts as the page background canvas */
+        .hero {
             background-image: url(img/fire.jpg);
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center 35%;
-            z-index: 1;
-        }
-
-        /* Main Content Wrapper - Flows naturally above the background */
-        .content-wrapper {
-            position: relative;
-            z-index: 2;
-            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
             padding: 80px 20px;
+            min-height: calc(100vh - 56px);
+            /* Fills the viewport up completely */
+            flex: 1;
         }
 
-        .page-header h1 {
+        .hero h1 {
             color: #fff;
             font-size: 4rem;
             font-weight: 800;
@@ -73,7 +63,7 @@
             margin: 0;
         }
 
-        .page-header .tagline {
+        .hero .tagline {
             color: rgba(255, 255, 255, 0.5);
             font-size: 1.25rem;
             font-weight: 300;
@@ -83,71 +73,90 @@
             text-transform: uppercase;
         }
 
-        /* Music Display Container */
-        .music-container {
-            max-width: 900px;
+        /* Jazzier Glassmorphic Blog Posts */
+        .blog-container {
+            max-width: 750px;
             width: 100%;
             margin-top: 50px;
+            /* Clean spacing instead of negative margins */
+            position: relative;
+            z-index: 3;
         }
 
-        /* Glassmorphic Media Modules */
-        .album-card {
+        .blog-post {
             background: rgba(20, 20, 20, 0.75);
-            border: 1px solid rgba(255, 61, 0, 0.15);
+            border: 1px solid rgba(255, 61, 0, 0.2);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 30px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 40px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 61, 0, 0.03);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .album-card:hover {
-            border-color: rgba(255, 61, 0, 0.4);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 61, 0, 0.08);
+        .blog-post-meta {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 15px;
+            margin-bottom: 1.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Album Covers */
-        .album-card img {
-            max-height: 280px;
-            width: auto;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .blog-post-badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: #ff3d00;
+            font-weight: 600;
         }
 
-        .album-card a:hover img {
-            transform: scale(1.03);
+        .blog-post-date {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.1em;
+            font-family: monospace;
         }
 
-        .album-title {
-            font-size: 1.35rem;
+        .blog-post h3 {
+            font-size: 2rem;
             font-weight: 700;
             color: #fff;
-            margin-top: 1.75rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
         }
 
-        .album-meta {
-            font-size: 0.8rem;
-            font-family: monospace;
-            color: #ff3d00;
-            margin-top: 0.25rem;
-            letter-spacing: 0.2em;
+        .blog-post p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
         }
 
-        /* Footer - Sits naturally at the end of the content flow */
+        .blog-post p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Voidy text highlights */
+        .highlight-cyan {
+            color: #00fff0;
+            text-shadow: 0 0 15px rgba(0, 255, 240, 0.2);
+            font-weight: 400;
+        }
+
+        .highlight-red {
+            color: #ef4444;
+            font-style: italic;
+        }
+
+        /* Footer */
         .main-footer {
             background-color: #1f1f1f;
             color: #cfcfcf;
             padding: 40px 20px 20px 20px;
             font-size: 14px;
             margin-top: auto;
-            position: relative;
-            z-index: 10;
         }
 
         .main-footer a {
@@ -171,16 +180,12 @@
 
         /* Responsive tweaks */
         @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2.3rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            .album-card {
+            .blog-post {
                 padding: 2rem 1.5rem;
-            }
-
-            .album-card img {
-                max-height: 220px;
             }
 
             .footer-bottom {
@@ -229,8 +234,8 @@
                         <a class="nav-link" href="crunch.html">Crunch</a>
                     </li>
                     <!-- <li class="nav-item">
-                        <a class="nav-link" href="roguewave.html">Rouge Wave</a>
-                    </li> -->
+            <a class="nav-link" href="roguewave.html">Rouge Wave</a>
+          </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="tessa.html">Tessa</a>
                     </li>
@@ -239,49 +244,33 @@
         </div>
     </nav>
 
-    <!-- Fixed Background Element -->
-    <div class="page-bg"></div>
-
-    <!-- Main Scrollable Content Wrapper -->
-    <main class="content-wrapper">
-        <div class="page-header text-center">
-            <h1>UP.INTO.DREAMS.</h1>
-            <p class="tagline">Human created audio slop lives here....</p>
+    <!-- Hero Section (Now fully wraps the content so the image never breaks) -->
+    <section class="hero">
+        <div class="text-center">
+            <h1>VIDS.</h1>
+            <p class="tagline">Videos that you might like...</p>
         </div>
 
-        <!-- Album Grid Container -->
-        <div class="container music-container">
-            <div class="row justify-content-center">
+        <!-- Blog Posts inside the hero canvas -->
+        <main class="blog-container">
 
-                <!-- Album: Determinism -->
-                <div class="col-12 col-md-6 mb-4">
-                    <div
-                        class="album-card text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                        <a href="/musicPages/determinism.html">
-                            <img src="/music/upintodreams/determinism/cover.jpeg" alt="Determinism Cover"
-                                class="img-fluid">
-                        </a>
-                        <div class="album-title">Determinism</div>
-                        <div class="album-meta">RELEASE // 2025</div>
-                    </div>
+            <!-- Post 1 -->
+            <div class="blog-post">
+                <div class="blog-post-meta">
+                    <div class="blog-post-badge">VID // 001</div>
+                    <div class="blog-post-date">DATE: JULY 17, 2026</div>
                 </div>
-
-                <!-- Album: C'est Horrifique -->
-                <div class="col-12 col-md-6 mb-4">
-                    <div
-                        class="album-card text-center h-100 d-flex flex-column justify-content-center align-items-center">
-                        <a href="/musicPages/cesthorrifique.html">
-                            <img src="/music/upintodreams/cesthorrifique/cover.jpeg" alt="C'est Horrifique Cover"
-                                class="img-fluid">
-                        </a>
-                        <div class="album-title">C'est Horrifique</div>
-                        <div class="album-meta">RELEASE // 2021</div>
-                    </div>
-                </div>
-
+                <h3>LG Spyware</h3>
+                <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400;">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q9uefFYe6bM?si=iU8M1OfmRMER0WhS"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </p>
             </div>
-        </div>
-    </main>
+
+        </main>
+    </section>
 
     <!-- Footer -->
     <footer class="main-footer">
