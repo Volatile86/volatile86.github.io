@@ -11,9 +11,10 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <style>
+    /* Reset & Base System Layout */
     html,
     body {
-      height: 100%;
+      min-height: 100vh;
       margin: 0;
       background-color: #121212;
       color: #f8f9fa;
@@ -22,9 +23,11 @@
       flex-direction: column;
     }
 
-    /* Navbar */
+    /* Navbar Brand & Nav Links */
     .navbar {
       background-color: #1f1f1f !important;
+      position: relative;
+      z-index: 10;
     }
 
     .navbar-brand,
@@ -36,85 +39,130 @@
       color: #ff3d00 !important;
     }
 
-    /* Hero Section */
+    /* Hero Canvas Layout */
     .hero {
       background-image: url(img/fire.jpg);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center 35%;
-      /* Moves image down so head is visible */
-      flex: 1;
+      flex: 1 0 auto;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      text-align: center;
-      padding: 60px 20px;
+      justify-content: flex-start; /* Keeps content naturally scrollable down from the top */
+      padding: 120px 20px 60px 20px; /* High top-padding prevents overlaps under navbar */
     }
 
-    .hero h1 {
-      color: #fff;
+    /* Typography Styling */
+    .hero-title {
       font-size: 4rem;
-      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.15), 3px 3px 8px rgba(0, 0, 0, 0.7);
+
+      /* Safety guards for long unbroken words like SHOCK.THE.SYSTEM. */
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 100%;
     }
 
-    /* Dreamy / Voidy Status Card Layout */
+    .tagline {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      font-style: italic;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* Glassmorphic Void Cards */
     .status-container {
-      max-width: 800px;
-      margin: -30px auto 50px auto;
-      /* Pulls the card slightly up into the hero edge for an integrated look */
+      max-width: 750px;
+      width: 100%;
+      margin: 40px auto 0 auto;
       padding: 0 20px;
       position: relative;
       z-index: 3;
     }
 
     .status-card {
-      background: rgba(31, 31, 31, 0.65);
-      border: 1px solid rgba(255, 61, 0, 0.15);
-      /* Subtle brand orange border */
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(20, 20, 20, 0.75);
+      border: 1px solid rgba(255, 61, 0, 0.25);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border-radius: 16px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
-        0 0 30px rgba(255, 61, 0, 0.03);
+      padding: 3rem 2.5rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
+                  0 0 40px rgba(255, 61, 0, 0.05);
+    }
+
+    /* Card Internal Elements */
+    .card-meta-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 15px;
+      margin-bottom: 1.5rem;
     }
 
     .status-badge {
       display: inline-block;
       font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       color: #ff3d00;
-      border: 1px solid rgba(255, 61, 0, 0.3);
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 1.25rem;
-      background: rgba(255, 61, 0, 0.05);
-      text-shadow: 0 0 8px rgba(255, 61, 0, 0.4);
+      font-weight: 600;
+    }
+
+    .status-timestamp {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.1em;
+      font-family: monospace;
     }
 
     .status-title {
-      font-size: 1.75rem;
+      font-size: 2rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-      margin-bottom: 1rem;
+      color: #fff;
+      margin-bottom: 1.75rem;
+      letter-spacing: -0.01em;
     }
 
     .status-text {
       color: #cbd5e1;
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1.1rem;
+      line-height: 1.8;
       font-weight: 300;
     }
 
-    /* Footer */
+    /* Highlights */
+    .brand-highlight {
+      color: #ff3d00;
+      font-weight: 500;
+    }
+
+    .danger-highlight {
+      color: #ef4444;
+      font-style: italic;
+    }
+
+    .cyan-void-highlight {
+      color: #00fff0;
+      text-shadow: 0 0 15px rgba(0, 255, 240, 0.2);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    /* Footer Layout */
     .main-footer {
       background-color: #1f1f1f;
       color: #cfcfcf;
       padding: 40px 20px 20px 20px;
       font-size: 14px;
       margin-top: auto;
+      position: relative;
+      z-index: 10;
     }
 
     .main-footer a {
@@ -124,30 +172,6 @@
 
     .main-footer a:hover {
       text-decoration: underline;
-    }
-
-    .footer-logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-      color: #fff;
-    }
-
-    .footer-columns {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    .footer-column {
-      flex: 1;
-      min-width: 200px;
-      margin-bottom: 20px;
-    }
-
-    .footer-column p,
-    .footer-column a {
-      margin: 5px 0;
     }
 
     .footer-bottom {
@@ -160,21 +184,32 @@
       color: #999;
     }
 
-    /* Responsive tweaks */
+    /* Responsive Mobile Overrides */
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
+      .hero {
+        padding-top: 100px; /* Safely pushes header down past expanded/wrapping mobile navbars */
+      }
+
+      .hero-title {
+        /* Scalable font size based on mobile viewport width to prevent overflow */
+        font-size: calc(1.1rem + 4vw);
+        letter-spacing: 0.05em; /* Tightens text tracking to keep it together */
+      }
+
+      .status-card {
+        padding: 2rem 1.25rem; /* Tighter padding inside cards on mobile devices */
       }
 
       .status-container {
-        margin-top: 20px;
-        /* Reset pull-up on mobile devices to prevent overlaps */
+        margin-top: 25px;
+        padding: 0 10px; /* Keeps cards cleanly inset from screen edges */
       }
 
       .footer-bottom {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 10px;
       }
     }
   </style>
@@ -196,10 +231,10 @@
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="books.html">Writing</a>
+            <a class="nav-link" href="blog.html">Blog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="blog.html">Blog</a>
+            <a class="nav-link" href="books.html">Writing</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="vids.html">Vids</a>
@@ -216,9 +251,6 @@
           <li class="nav-item">
             <a class="nav-link" href="crunch.html">Crunch</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="roguewave.html">Rouge Wave</a>
-          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="tessa.html">Tessa</a>
           </li>
@@ -227,91 +259,58 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero"
-    style="flex-direction: column; height: auto; min-height: fit-content; padding-top: 40px; padding-bottom: 60px; display: flex; align-items: center; justify-content: center;">
-    <div class="text-center mb-5">
-      <h1 style="letter-spacing: 0.1em; font-weight: 800; text-shadow: 0 0 20px rgba(255,255,255,0.15);">
-        SHOCK.THE.SYSTEM.</h1>
-      <p class="tagline"
-        style="color: rgba(255, 255, 255, 0.5); font-size: 1.25rem; font-weight: 300; letter-spacing: 0.2em; font-style: italic; margin-top: 0.5rem; text-transform: uppercase;">
-        It begins again...</p>
-    </div>
+  <!-- Main Content Area -->
+  <main class="hero">
+    <header class="text-center mb-4">
+      <h1 class="hero-title">SHOCK.THE.SYSTEM.</h1>
+      <p class="tagline">It begins again...</p>
+    </header>
 
-    <div class="status-container mb-5" style="max-width: 750px; width: 100%; padding: 0 20px;">
-      <div class="status-card"
-        style="background: rgba(20, 20, 20, 0.75); border: 1px solid rgba(255, 61, 0, 0.25); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-radius: 16px; padding: 3rem 2.5rem; box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 61, 0, 0.05);">
-
-
-        <div class="d-flex justify-content-between align-items-center mb-4"
-          style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
-          <div class="status-badge"
-            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: #ff3d00; font-weight: 600;">
-            System Protocol v2.0</div>
-          <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; font-family: monospace;">
-            STATUS: TRANSMITTING</div>
+    <!-- Card 1: Discord -->
+    <section class="status-container">
+      <div class="status-card">
+        <div class="d-flex justify-content-between align-items-center card-meta-row">
+          <div class="status-badge">System Protocol v2.0</div>
+          <div class="status-timestamp">STATUS: TRANSMITTING</div>
         </div>
 
-        <h2 class="status-title"
-          style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 1.75rem; letter-spacing: -0.01em;">
-          Join The Discord Server</h2>
+        <h2 class="status-title">Join The Discord Server</h2>
 
-        <div class="status-text" style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.8; font-weight: 300;">
-
-          <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400; margin-bottom: 1.5rem;">
-            Come check out the <span style="color: #ff3d00; font-weight: 500;">SHOCK.THE.SYSTEM.
-              Discord Server</span>.
+        <div class="status-text">
+          <p class="fs-5 text-white fw-normal mb-4">
+            Come check out the <span class="brand-highlight">SHOCK.THE.SYSTEM. Discord Server</span>.
           </p>
-
-          <p style="margin-bottom: 1.5rem; opacity: 0.9;">
-            <span style="color: #ef4444; font-style: italic;">Lots of cool things are going on. Contact me if you want
-              an invite.
+          <p class="mb-0 opacity-90">
+            <span class="danger-highlight">Lots of cool things are going on. Contact me if you want an invite.</span>
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="status-container" style="max-width: 750px; width: 100%; padding: 0 20px; margin: 0 auto;">
-      <div class="status-card"
-        style="background: rgba(20, 20, 20, 0.75); border: 1px solid rgba(255, 61, 0, 0.25); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-radius: 16px; padding: 3rem 2.5rem; box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 61, 0, 0.05);">
-
-
-        <div class="d-flex justify-content-between align-items-center mb-4"
-          style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
-          <div class="status-badge"
-            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: #ff3d00; font-weight: 600;">
-            System Protocol v2.0</div>
-          <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; font-family: monospace;">
-            STATUS: TRANSMITTING</div>
+    <!-- Card 2: State of the Void -->
+    <section class="status-container">
+      <div class="status-card">
+        <div class="d-flex justify-content-between align-items-center card-meta-row">
+          <div class="status-badge">System Protocol v2.0</div>
+          <div class="status-timestamp">STATUS: TRANSMITTING</div>
         </div>
 
-        <h2 class="status-title"
-          style="font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 1.75rem; letter-spacing: -0.01em;">
-          Current State of the Void</h2>
+        <h2 class="status-title">Current State of the Void</h2>
 
-        <div class="status-text" style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.8; font-weight: 300;">
-
-          <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400; margin-bottom: 1.5rem;">
-            The social media experiment known as <span style="color: #ff3d00; font-weight: 500;">SHOCK.THE.SYSTEM.
-              1.0</span> has shut down.
+        <div class="status-text">
+          <p class="fs-5 text-white fw-normal mb-4">
+            The social media experiment known as <span class="brand-highlight">SHOCK.THE.SYSTEM. 1.0</span> has shut down.
           </p>
-
-          <p style="margin-bottom: 1.5rem; opacity: 0.9;">
-            To summarize: <span style="color: #ef4444; font-style: italic;">it was a complete failure.</span> The
-            nostalgic MySpace model of old no longer appears to be viable in this ecosystem. Infinite algorithmic
-            doomscrolling on central corporate feeds seems to be the dopamine hit of choice for the masses. It may come
-            back one day. It may not.
+          <p class="mb-4 opacity-90">
+            To summarize: <span class="danger-highlight">it was a complete failure.</span> The nostalgic MySpace model of old no longer appears to be viable in this ecosystem. Infinite algorithmic doomscrolling on central corporate feeds seems to be the dopamine hit of choice for the masses. It may come back one day. It may not.
           </p>
-
-          <p
-            style="margin-bottom: 0; font-size: 1.15rem; color: #00fff0; text-shadow: 0 0 15px rgba(0,255,240,0.2); font-weight: 400; letter-spacing: 0.02em;">
+          <p class="cyan-void-highlight mb-0">
             Not to fret, though. It is time to clear the cache. Time to begin again.
           </p>
-
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="main-footer">
@@ -321,7 +320,7 @@
     </div>
   </footer>
 
-  <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+  <!-- Bootstrap 5 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
