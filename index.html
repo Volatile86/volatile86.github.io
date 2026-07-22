@@ -49,8 +49,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start; /* Keeps content naturally scrollable down from the top */
-      padding: 120px 20px 60px 20px; /* High top-padding prevents overlaps under navbar */
+      justify-content: flex-start;
+      /* Keeps content naturally scrollable down from the top */
+      padding: 120px 20px 60px 20px;
+      /* High top-padding prevents overlaps under navbar */
     }
 
     /* Typography Styling */
@@ -95,7 +97,7 @@
       border-radius: 16px;
       padding: 3rem 2.5rem;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
-                  0 0 40px rgba(255, 61, 0, 0.05);
+        0 0 40px rgba(255, 61, 0, 0.05);
     }
 
     /* Card Internal Elements */
@@ -187,22 +189,26 @@
     /* Responsive Mobile Overrides */
     @media (max-width: 768px) {
       .hero {
-        padding-top: 100px; /* Safely pushes header down past expanded/wrapping mobile navbars */
+        padding-top: 100px;
+        /* Safely pushes header down past expanded/wrapping mobile navbars */
       }
 
       .hero-title {
         /* Scalable font size based on mobile viewport width to prevent overflow */
         font-size: calc(0.8rem + 4vw);
-        letter-spacing: 0.05em; /* Tightens text tracking to keep it together */
+        letter-spacing: 0.05em;
+        /* Tightens text tracking to keep it together */
       }
 
       .status-card {
-        padding: 2rem 1.25rem; /* Tighter padding inside cards on mobile devices */
+        padding: 2rem 1.25rem;
+        /* Tighter padding inside cards on mobile devices */
       }
 
       .status-container {
         margin-top: 25px;
-        padding: 0 10px; /* Keeps cards cleanly inset from screen edges */
+        padding: 0 10px;
+        /* Keeps cards cleanly inset from screen edges */
       }
 
       .footer-bottom {
@@ -266,6 +272,26 @@
       <p class="tagline">It begins again...</p>
     </header>
 
+    <section class="status-container">
+      <div class="status-card">
+        <div class="d-flex justify-content-between align-items-center card-meta-row">
+          <div class="status-badge">System Protocol v2.0</div>
+          <div class="status-timestamp">STATUS: TRANSMITTING</div>
+        </div>
+
+        <h2 class="status-title">New Static Site Live</h2>
+
+        <div class="status-text">
+          <p class="fs-5 text-white fw-normal mb-4">
+            New static site is <span class="brand-highlight">live.</span>.
+          </p>
+          <p class="mb-0 opacity-90">
+            <span class="danger-highlight">As far as game scores and posts and all that good stuff from the social media site, I've got it all backed up. If I decide to relaunch it one of these days, I see have everything (Yeah, I know I'll never beat those flappy bird scores). Hopefully I can bring some games here as well. It won't work the same since this site isn't database driven, but we can see what happens.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Card 1: Discord -->
     <section class="status-container">
       <div class="status-card">
@@ -299,10 +325,13 @@
 
         <div class="status-text">
           <p class="fs-5 text-white fw-normal mb-4">
-            The social media experiment known as <span class="brand-highlight">SHOCK.THE.SYSTEM. 1.0</span> has shut down.
+            The social media experiment known as <span class="brand-highlight">SHOCK.THE.SYSTEM. 1.0</span> has shut
+            down.
           </p>
           <p class="mb-4 opacity-90">
-            To summarize: <span class="danger-highlight">it was a complete failure.</span> The nostalgic MySpace model of old no longer appears to be viable in this ecosystem. Infinite algorithmic doomscrolling on central corporate feeds seems to be the dopamine hit of choice for the masses. It may come back one day. It may not.
+            To summarize: <span class="danger-highlight">it was a complete failure.</span> The nostalgic MySpace model
+            of old no longer appears to be viable in this ecosystem. Infinite algorithmic doomscrolling on central
+            corporate feeds seems to be the dopamine hit of choice for the masses. It may come back one day. It may not.
           </p>
           <p class="cyan-void-highlight mb-0">
             Not to fret, though. It is time to clear the cache. Time to begin again.
