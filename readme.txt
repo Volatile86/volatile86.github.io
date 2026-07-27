@@ -1,77 +1,27 @@
-################################################################################################
+## SHOCK.THE.SYSTEM. 2.0
 
-Documentation for Bootstrap Blog by Bootstrap Temple - https://bootstrapious.com
+---
 
-################################################################################################
+### Web 1.0 Experience
 
-Hi,
+This iteration of **SHOCK.THE.SYSTEM.** is closer to a web 1.0. experience after the failure of the social media website.
 
-thank you for downloading. Have fun and tell your friends about us ;)
+It's a more curated site, built with:
 
-Ondrej, Bootstrapious
+- Bootstrap
+- HTML
+- A little JavaScript thrown in there
 
+It is currently hosted on Github, so it is not database driven like **SHOCK.THE.SYSTEM. 1.0** was.
 
-CSS
-----------
+---
 
-The theme stylesheet is css/style.default.css. If you want to make any changes, 
-you can do it here or better to override it in custom.css so you can update the original theme stylesheet if an updated is released. 
-Changing to another colour variant, is just a matter of replacing css/style.default.css with css/style.pink.css in index.html.
+## Tessa
 
-Javascript
-----------
+### The Archetype of Optimism
 
-Apart from the Bootstrap JS components, the majority of JS is located in /js/front.js. 
+Tessa is one of the primary focuses of the site.
 
-Credits
----------
+She is an archetype of optimism, and her section will be expanding.
 
-- Botstrap - http://getbootstrap.com
-- Font Awesome 4.7 - http://fontawesome.io/
-- Google Fonts - Roboto
-- more in credits.txt.
-
-Changelog
----------
-
-Version 1.2.1 - 2018/04/19
-
-- updated: Bootstrap 4.3.1
-- updated plugins: Fancybox, PopperJs 
-
-
-Version 1.2.0 - 2018/04/19
-
-- updated: Bootstrap 4.1.0
-- updated plugins: jQuery, Fancybox, PopperJs
-
-Version 1.1.1 - 2017/11/07
-
-- removed Animsition 
-
-Version 1.1 - 2017/10/27
-
-- moved 3rd party scripts to /vendor directory
-- updated to Boostrap 4.0.0-beta2
-- CSS - vendor prefixing for last 2 browser versions
-
-Version 1.0 -  rel. 2017/08/08
-
-- Initial Release
-
-
----------------------
- LICENSE CONDITIONS
----------------------
-
-You are completely free to use this template for your personal use or as a work for your client as long as you keep the link at the template footer pointing to us and our partner. 
-
-If you would prefer removing the backlink from the theme footer, please purchase the attribution-free licese at https://bootstraptemple.com. The price of the license is mere $10. Also, as a bonus for donors, I can provide you the SASS files for even easier template customization. Drop me a line at hello@bootstraptemple.com after donating. 
-
-However,  you cannot redistribute the template nor its derivatives on the internet - neither for free or commercially (e.g. selling it on template marketplace).
-
-Thank you for understanding and respecting the license conditions.
-
-If more info needed, contact me at hello@bootstraptemple.com.
-
-Note: I distribute this template also on my second site, Bootstrapious. License conditions are the same, you can donate on Bootstrap Temple or Bootstrapious. Thanks :)
+---
