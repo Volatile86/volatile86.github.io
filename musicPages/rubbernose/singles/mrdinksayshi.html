@@ -2,38 +2,67 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Music: Determinism - SHOCK.THE.SYSTEM.</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mr. Dink Says Hi. // SHOCK.THE.SYSTEM.</title>
 
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
 
     <!-- Howler.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 
+
     <style>
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
-            min-height: 100vh;
 
-            /* layered background */
             background:
-                radial-gradient(circle at 20% 20%, rgba(255, 61, 0, 0.15), transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(0, 150, 255, 0.12), transparent 40%),
-                linear-gradient(180deg, #0a0a0a, #121212, #0a0a0a);
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255, 61, 0, 0.12),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(0, 150, 255, 0.08),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    180deg,
+                    #080808 0%,
+                    #111111 50%,
+                    #080808 100%
+                );
 
             display: flex;
             flex-direction: column;
         }
 
-        /* Navbar Styling */
+
+        /* =========================================================
+           NAVBAR
+           ========================================================= */
+
         .navbar {
-            background-color: rgba(20, 20, 20, 0.85) !important;
-            backdrop-filter: blur(6px);
+            background-color: rgba(20, 20, 20, 0.9) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 20;
         }
 
         .navbar-brand,
@@ -45,113 +74,276 @@
             color: #ff3d00 !important;
         }
 
-        /* Custom override to force the toggle icon border to blend nicely if you want */
         .navbar-toggler {
             border-color: rgba(255, 255, 255, 0.1) !important;
         }
 
-        /* Hero */
-        .hero {
-            background: url('/music/rubbernose/singles/mrdink.jpg') no-repeat center center;
-            background-size: cover;
-            position: relative;
-            padding: 140px 20px;
-        }
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .9));
-        }
+        /* =========================================================
+           MAIN CONTENT
+           ========================================================= */
 
-        .hero h1 {
+        .music-page {
             position: relative;
             z-index: 2;
-            font-size: 3rem;
-            text-shadow: 0 0 20px rgba(255, 61, 0, 0.6);
+            width: 100%;
+            padding: 70px 20px 90px;
         }
 
-        /* PLAYER WRAPPER */
-        .player-container {
-            max-width: 750px;
-            margin: -80px auto 60px auto;
-            padding: 40px;
 
-            background: rgba(20, 20, 20, 0.85);
-            border-radius: 16px;
+        /* =========================================================
+           ALBUM ART
+           ========================================================= */
 
-            backdrop-filter: blur(8px);
+        .album-art-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .album-art {
+            display: block;
+
+            width: min(450px, 90vw);
+            height: auto;
+
+            border-radius: 10px;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
 
             box-shadow:
-                0 0 30px rgba(0, 0, 0, .7),
-                0 0 60px rgba(255, 61, 0, .08);
+                0 35px 80px rgba(0, 0, 0, 0.9),
+                0 0 80px rgba(255, 61, 0, 0.08);
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+        .album-art:hover {
+            transform: scale(1.015);
+
+            box-shadow:
+                0 40px 90px rgba(0, 0, 0, 0.95),
+                0 0 100px rgba(255, 61, 0, 0.14);
+        }
+
+
+        /* =========================================================
+           TITLE
+           ========================================================= */
+
+        .album-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .album-header h1 {
+            margin: 0;
+
+            font-size: 3.2rem;
+            font-weight: 800;
+
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+
+            text-shadow:
+                0 0 20px rgba(255, 61, 0, 0.35);
+        }
+
+        .album-header .subtitle {
+            margin-top: 10px;
+
+            color: rgba(255, 255, 255, 0.45);
+
+            font-family: monospace;
+            font-size: 0.85rem;
+
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           PLAYER
+           ========================================================= */
+
+        .player-container {
+            max-width: 750px;
+            margin: 0 auto;
+
+            padding: 40px;
+
+            background: rgba(18, 18, 18, 0.88);
+
+            border: 1px solid rgba(255, 61, 0, 0.14);
+            border-radius: 18px;
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.8),
+                0 0 50px rgba(255, 61, 0, 0.04);
 
             text-align: center;
         }
 
-        /* Visualizer */
-        #visualizer {
+
+        /* =========================================================
+           VISUALIZER
+           ========================================================= */
+
+        #visualizer-container {
             width: 100%;
-            height: 130px;
-            border-radius: 10px;
-            background: #0c0c0c;
-            margin-bottom: 25px;
-            box-shadow: inset 0 0 25px rgba(0, 0, 0, .8);
         }
 
-        /* Song List */
+        #visualizer {
+            display: block;
+
+            width: 100%;
+            height: 130px;
+
+            border-radius: 10px;
+
+            background: #090909;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                inset 0 0 30px rgba(0, 0, 0, 0.9);
+        }
+
+
+        /* =========================================================
+           SONG LIST
+           ========================================================= */
+
         .song-list {
             list-style: none;
+
             padding: 0;
-            margin: 20px 0;
+            margin: 20px 0 30px;
         }
 
         .song-list li {
-            padding: 10px 14px;
-            margin: 6px 0;
+            padding: 14px 18px;
+
+            margin: 8px 0;
+
             border-radius: 10px;
 
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.025);
+
+            border: 1px solid rgba(255, 255, 255, 0.04);
 
             cursor: pointer;
 
-            transition: all .2s ease;
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
         }
 
         .song-list li:hover {
-            background: linear-gradient(90deg, #ff3d00, #ff6a00);
-            transform: translateX(6px);
+            background: rgba(255, 61, 0, 0.15);
+
+            border-color: rgba(255, 61, 0, 0.35);
+
+            transform: translateX(5px);
         }
 
-        /* Buttons */
-        .player-buttons button {
+
+        /* =========================================================
+           PLAYER BUTTONS
+           ========================================================= */
+
+        .player-buttons {
+            text-align: center;
+        }
+
+        .player-buttons button,
+        .player-buttons a {
             margin: 6px;
+
             border-radius: 25px;
-            padding: 8px 20px;
+
+            padding: 9px 22px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.03em;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #ff3d00, #ff6a00);
+            background: linear-gradient(
+                45deg,
+                #ff3d00,
+                #ff6a00
+            );
+
             border: none;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(
+                45deg,
+                #ff4d16,
+                #ff751a
+            );
         }
 
         .btn-danger {
-            background: linear-gradient(45deg, #ff003c, #ff5c5c);
+            background: linear-gradient(
+                45deg,
+                #ff003c,
+                #ff5c5c
+            );
+
             border: none;
         }
 
-        /* Footer */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+
+            border-color: rgba(255, 255, 255, 0.3);
+
+            color: #fff;
+        }
+
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
         .main-footer {
             background: #0f0f0f;
+
             color: #cfcfcf;
-            padding: 40px 20px 20px 20px;
+
+            padding: 40px 20px 20px;
+
             font-size: 14px;
+
             margin-top: auto;
+
+            position: relative;
+            z-index: 10;
         }
 
         .main-footer a {
             color: #ff3d00;
+
+            text-decoration: none;
         }
 
         .main-footer a:hover {
@@ -160,27 +352,48 @@
 
         .footer-bottom {
             border-top: 1px solid #333;
+
             padding-top: 15px;
+
             display: flex;
             justify-content: space-between;
+
             flex-wrap: wrap;
+
             font-size: 13px;
+
             color: #999;
         }
 
-        /* Mobile Adjustments */
-        @media (max-width:768px) {
-            .hero {
-                padding: 100px 20px 80px 20px; /* Aligns with home hero adjustments to clear navbar */
+
+        /* =========================================================
+           MOBILE
+           ========================================================= */
+
+        @media (max-width: 768px) {
+
+            .music-page {
+                padding: 50px 15px 70px;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .album-art {
+                width: min(380px, 90vw);
+            }
+
+            .album-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .album-header .subtitle {
+                font-size: 0.75rem;
             }
 
             .player-container {
-                margin: -60px 15px 40px 15px;
-                padding: 30px;
+                padding: 25px 20px;
+            }
+
+            #visualizer {
+                height: 100px;
             }
 
             .footer-bottom {
@@ -189,165 +402,409 @@
                 gap: 10px;
             }
         }
+
     </style>
+
 </head>
 
+
 <body>
-    <!-- Navbar (Added .navbar-dark class here) -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+
+
+    <!-- =========================================================
+         NAVBAR
+         ========================================================= -->
+
+    <nav class="navbar navbar-expand-lg">
+
         <div class="container">
-            <a class="navbar-brand">SHOCK.THE.SYSTEM.</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+            <a class="navbar-brand" href="/index.html">
+                SHOCK.THE.SYSTEM.
+            </a>
+
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
                 <span class="navbar-toggler-icon"></span>
+
             </button>
 
+
             <div class="collapse navbar-collapse" id="navbarNav">
+
                 <ul class="navbar-nav ms-auto">
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/index.html">Home</a>
+                        <a class="nav-link" href="/index.html">
+                            Home
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/blog.html">Blog</a>
+                        <a class="nav-link" href="/blog.html">
+                            Blog
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/books.html">Writing</a>
+                        <a class="nav-link" href="/books.html">
+                            Writing
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/vids.html">Vids</a>
+                        <a class="nav-link" href="/vids.html">
+                            Vids
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/music.html">Music</a>
+                        <a class="nav-link active" href="/music.html">
+                            Music
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/pictures.html">Pictures</a>
+                        <a class="nav-link" href="/pictures.html">
+                            Pictures
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/films.html">Films</a>
+                        <a class="nav-link" href="/films.html">
+                            Films
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/crunch.html">Crunch</a>
+                        <a class="nav-link" href="/crunch.html">
+                            Crunch
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/tessa.html">Tessa</a>
+                        <a class="nav-link" href="/tessa.html">
+                            Tessa
+                        </a>
                     </li>
+
                 </ul>
+
             </div>
+
         </div>
+
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Music: Mr. Dink Says Hi.</h1>
-    </section>
 
-    <!-- Player Section -->
-    <div class="container player-container">
-        <!-- Visualizer -->
-        <div id="visualizer-container">
-            <canvas id="visualizer"></canvas>
+    <!-- =========================================================
+         MUSIC PAGE
+         ========================================================= -->
+
+    <main class="music-page">
+
+
+        <!-- Album Artwork -->
+
+        <div class="album-art-wrapper">
+
+            <img
+                src="/music/rubbernose/singles/mrdink.jpg"
+                alt="Mr. Dink Says Hi. Cover"
+                class="album-art">
+
         </div>
 
-        <!-- Song List -->
-        <ul class="song-list">
-            <li onclick="playSong(0)">1. Mr. Dink Says Hi.</li>
-        </ul>
 
-        <!-- Player Buttons -->
-        <div class="player-buttons mt-3">
-            <button class="btn btn-primary" onclick="playNextSong()">Play Next Song</button>
-            <button class="btn btn-danger" onclick="stopSong()">Stop</button>
+        <!-- Single Title -->
+
+        <header class="album-header">
+
+            <h1>
+                Mr. Dink Says Hi.
+            </h1>
+
+            <div class="subtitle">
+                Rubber Nose // Single // 2026
+            </div>
+
+        </header>
+
+
+        <!-- Player -->
+
+        <div class="player-container">
+
+
+            <!-- Visualizer -->
+
+            <div id="visualizer-container">
+
+                <canvas id="visualizer"></canvas>
+
+            </div>
+
+
+            <!-- Song List -->
+
+            <ul class="song-list">
+
+                <li onclick="playSong(0)">
+                    <span>01.</span>
+                    Mr. Dink Says Hi.
+                </li>
+
+            </ul>
+
+
+            <!-- Player Buttons -->
+
+            <div class="player-buttons">
+
+                <button
+                    class="btn btn-primary"
+                    onclick="playSong(0)">
+                    Play
+                </button>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="playNextSong()">
+                    Play Next Song
+                </button>
+
+                <button
+                    class="btn btn-danger"
+                    onclick="stopSong()">
+                    Stop
+                </button>
+
+                <a
+                    href="/music/rubbernose/singles/Rubber_Nose-Mr_Dink_Says_Hi.mp3"
+                    download="Rubber_Nose-Mr_Dink_Says_Hi.mp3"
+                    class="btn btn-secondary">
+                    Download
+                </a>
+
+            </div>
+
         </div>
-    </div>
 
-    <!-- Footer -->
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
     <footer class="main-footer">
+
         <div class="footer-bottom container">
-            <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
-            <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
+
+            <p>
+                © 2040 SHOCK.THE.SYSTEM.. All rights reserved.
+            </p>
+
+            <p>
+                Template By
+                <a href="https://bootstrapious.com/p/bootstrap-carousel">
+                    Your Mom
+                </a>
+            </p>
+
         </div>
+
     </footer>
 
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
 
-    <!-- Howler.js Player -->
+    <!-- Bootstrap 5 JS Bundle -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUV0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+    </script>
+
+
+    <!-- =========================================================
+         HOWLER.JS PLAYER
+         ========================================================= -->
+
     <script>
+
         const songList = [
-            '/music/rubbernose/singles/Rubber_Nose-Mr_Dink_Says_Hi.mp3',
+            '/music/rubbernose/singles/Rubber_Nose-Mr_Dink_Says_Hi.mp3'
         ];
 
+
         let currentSongIndex = 0;
+
+
         let currentSong = new Howl({
             src: [songList[currentSongIndex]],
             html5: true,
             onend: playNextSong
         });
 
+
         let audioSource;
+
         let analyser = Howler.ctx.createAnalyser();
-        let canvas = document.getElementById('visualizer');
-        let ctx = canvas.getContext('2d');
+
+        let canvas =
+            document.getElementById('visualizer');
+
+        let ctx =
+            canvas.getContext('2d');
+
 
         function playSong(index) {
+
             currentSong.stop();
+
             currentSongIndex = index;
+
             currentSong = new Howl({
                 src: [songList[currentSongIndex]],
                 html5: true,
                 onend: playNextSong
             });
+
             currentSong.play();
+
             setupVisualizer();
         }
+
 
         function playNextSong() {
+
             currentSong.stop();
-            currentSongIndex = (currentSongIndex + 1) % songList.length;
+
+            currentSongIndex =
+                (currentSongIndex + 1) %
+                songList.length;
+
             currentSong = new Howl({
                 src: [songList[currentSongIndex]],
                 html5: true,
                 onend: playNextSong
             });
+
             currentSong.play();
+
             setupVisualizer();
         }
 
+
         function stopSong() {
+
             currentSong.stop();
+
         }
 
+
         function setupVisualizer() {
-            analyser = Howler.ctx.createAnalyser();
-            audioSource = Howler.ctx.createMediaElementSource(currentSong._sounds[0]._node);
+
+            analyser =
+                Howler.ctx.createAnalyser();
+
+            audioSource =
+                Howler.ctx.createMediaElementSource(
+                    currentSong._sounds[0]._node
+                );
+
             audioSource.connect(analyser);
-            analyser.connect(Howler.ctx.destination);
+
+            analyser.connect(
+                Howler.ctx.destination
+            );
+
             analyser.fftSize = 256;
+
             visualize();
         }
 
+
         function visualize() {
+
             requestAnimationFrame(visualize);
-            const bufferLength = analyser.frequencyBinCount;
-            const dataArray = new Uint8Array(bufferLength);
-            analyser.getByteFrequencyData(dataArray);
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const bufferLength =
+                analyser.frequencyBinCount;
 
-            const barWidth = (canvas.width / bufferLength) * 2.5;
+            const dataArray =
+                new Uint8Array(bufferLength);
+
+            analyser.getByteFrequencyData(
+                dataArray
+            );
+
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            const barWidth =
+                (canvas.width / bufferLength) *
+                2.5;
+
             let x = 0;
 
-            for (let i = 0; i < bufferLength; i++) {
-                const barHeight = dataArray[i] / 255 * canvas.height;
-                const pulse = Math.sin((Date.now() / 100) + i) * 5;
-                const hue = (Date.now() / 50 + i * 8) % 360;
-                ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
-                ctx.fillRect(x, canvas.height - barHeight - pulse, barWidth, barHeight + pulse);
+
+            for (
+                let i = 0;
+                i < bufferLength;
+                i++
+            ) {
+
+                const barHeight =
+                    dataArray[i] / 255 *
+                    canvas.height;
+
+                const pulse =
+                    Math.sin(
+                        (Date.now() / 100) + i
+                    ) * 5;
+
+                const hue =
+                    (Date.now() / 50 + i * 8) %
+                    360;
+
+
+                ctx.fillStyle =
+                    `hsl(${hue}, 100%, 50%)`;
+
+
+                ctx.fillRect(
+                    x,
+                    canvas.height -
+                        barHeight -
+                        pulse,
+                    barWidth,
+                    barHeight + pulse
+                );
+
+
                 x += barWidth + 1;
             }
+
         }
+
     </script>
+
+
 </body>
 
 </html>

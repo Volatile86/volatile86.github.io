@@ -1,35 +1,29 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Music // SHOCK.THE.SYSTEM.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music: Up Into Dreams - SHOCK.THE.SYSTEM.</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-        crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
         html,
         body {
-            min-height: 100%;
+            height: 100%;
             margin: 0;
             background-color: #121212;
             color: #f8f9fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
             letter-spacing: 0.03em;
         }
 
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Navbar */
+        /* Navbar - Kept exact brand styling */
         .navbar {
             background-color: #1f1f1f !important;
             position: relative;
@@ -45,7 +39,7 @@
             color: #ff3d00 !important;
         }
 
-        /* Fixed Background */
+        /* Fixed Background Canvas - Fixed to viewport so it never cuts off or overlaps */
         .page-bg {
             position: fixed;
             top: 0;
@@ -59,7 +53,7 @@
             z-index: 1;
         }
 
-        /* Main Content */
+        /* Main Content Wrapper - Flows naturally above the background */
         .content-wrapper {
             position: relative;
             z-index: 2;
@@ -68,20 +62,6 @@
             flex-direction: column;
             align-items: center;
             padding: 80px 20px;
-        }
-
-        /* Music Sections */
-        .music-section {
-            width: 100%;
-        }
-
-        .music-section + .music-section {
-            margin-top: 80px;
-        }
-
-        /* Section Headers */
-        .page-header {
-            text-align: center;
         }
 
         .page-header h1 {
@@ -119,22 +99,16 @@
             border-radius: 16px;
             padding: 2.5rem;
             margin-bottom: 30px;
-            box-shadow:
-                0 30px 60px rgba(0, 0, 0, 0.8),
-                0 0 40px rgba(255, 61, 0, 0.03);
-            transition:
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 61, 0, 0.03);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .album-card:hover {
             border-color: rgba(255, 61, 0, 0.4);
-            box-shadow:
-                0 30px 60px rgba(0, 0, 0, 0.9),
-                0 0 40px rgba(255, 61, 0, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 61, 0, 0.08);
         }
 
-        /* Album / Single Covers */
+        /* Album Covers */
         .album-card img {
             max-height: 280px;
             width: auto;
@@ -148,7 +122,6 @@
             transform: scale(1.03);
         }
 
-        /* Titles */
         .album-title {
             font-size: 1.35rem;
             font-weight: 700;
@@ -166,7 +139,7 @@
             letter-spacing: 0.2em;
         }
 
-        /* Footer */
+        /* Footer - Sits naturally at the end of the content flow */
         .main-footer {
             background-color: #1f1f1f;
             color: #cfcfcf;
@@ -196,18 +169,10 @@
             color: #999;
         }
 
-        /* Responsive */
+        /* Responsive tweaks */
         @media (max-width: 768px) {
-            .content-wrapper {
-                padding: 60px 15px;
-            }
-
             .page-header h1 {
                 font-size: 2.3rem;
-            }
-
-            .page-header .tagline {
-                font-size: 1rem;
             }
 
             .album-card {
@@ -216,10 +181,6 @@
 
             .album-card img {
                 max-height: 220px;
-            }
-
-            .music-section + .music-section {
-                margin-top: 60px;
             }
 
             .footer-bottom {
@@ -232,286 +193,151 @@
 </head>
 
 <body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-
-            <a class="navbar-brand" href="index.html">
-                SHOCK.THE.SYSTEM.
-            </a>
-
-            <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-
+            <a class="navbar-brand" href="index.html">SHOCK.THE.SYSTEM.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-
                 <ul class="navbar-nav ms-auto">
-
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="blog.html">Blog</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="books.html">Writing</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="vids.html">Vids</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link active" href="music.html">Music</a>
+                        <a class="nav-link" href="music.html">Music</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="pictures.html">Pictures</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="films.html">Films</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="crunch.html">Crunch</a>
                     </li>
-
-                    <!--
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="roguewave.html">Rouge Wave</a>
-                    </li>
-                    -->
-
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="tessa.html">Tessa</a>
                     </li>
-
                 </ul>
-
             </div>
         </div>
     </nav>
 
-
     <!-- Fixed Background Element -->
     <div class="page-bg"></div>
 
-
-    <!-- Main Scrollable Content -->
+    <!-- Main Scrollable Content Wrapper -->
+    ```html
+    <!-- Main Scrollable Content Wrapper -->
     <main class="content-wrapper">
 
-        <!-- ===================================================== -->
-        <!-- RUBBER NOSE -->
-        <!-- ===================================================== -->
+        <!-- Rubber Nose -->
+        <div class="page-header text-center">
+            <h1>RUBBER.NOSE.</h1>
+            <p class="tagline">The nose knows.</p>
+        </div>
 
-        <section class="music-section">
+        <div class="container music-container">
+            <div class="row justify-content-center">
 
-            <div class="page-header">
-                <h1>RUBBER.NOSE.</h1>
-
-                <p class="tagline">
-                    The nose knows.
-                </p>
-            </div>
-
-
-            <div class="container music-container">
-
-                <div class="row justify-content-center">
-
-                    <!-- Green Machine -->
-                    <div class="col-12 col-md-6 mb-4">
-
-                        <div class="album-card text-center h-100
-                            d-flex flex-column
-                            justify-content-center
-                            align-items-center">
-
-                            <a href="/musicPages/rubbernose/singles/greenmachine.html">
-
-                                <img src="/music/rubbernose/singles/greenmachine.jpg"
-                                    alt="Green Machine Cover"
-                                    class="img-fluid">
-
-                            </a>
-
-                            <div class="album-title">
-                                Green Machine
-                            </div>
-
-                            <div class="album-meta">
-                                SINGLE // 2026
-                            </div>
-
-                        </div>
-
+                <!-- Single: Green Machine -->
+                <div class="col-12 col-md-6 mb-4">
+                    <div
+                        class="album-card text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                        <a href="/musicPages/rubbernose/singles/greenmachine.html">
+                            <img src="/music/rubbernose/singles/greenmachine.jpg" alt="Green Machine Cover"
+                                class="img-fluid">
+                        </a>
+                        <div class="album-title">Green Machine</div>
+                        <div class="album-meta">SINGLE // 2026</div>
                     </div>
+                </div>
 
-
-                    <!-- Mr. Dink -->
-                    <div class="col-12 col-md-6 mb-4">
-
-                        <div class="album-card text-center h-100
-                            d-flex flex-column
-                            justify-content-center
-                            align-items-center">
-
-                            <a href="/musicPages/rubbernose/singles/mrdink.html">
-
-                                <img src="/music/rubbernose/singles/mrdink.jpg"
-                                    alt="Mr. Dink Cover"
-                                    class="img-fluid">
-
-                            </a>
-
-                            <div class="album-title">
-                                Mr. Dink
-                            </div>
-
-                            <div class="album-meta">
-                                SINGLE // 2026
-                            </div>
-
-                        </div>
-
+                <!-- Single: Mr. Dink -->
+                <div class="col-12 col-md-6 mb-4">
+                    <div
+                        class="album-card text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                        <a href="/musicPages/rubbernose/singles/mrdinksayshi.html">
+                            <img src="/music/rubbernose/singles/mrdink.jpg" alt="Mr. Dink Cover" class="img-fluid">
+                        </a>
+                        <div class="album-title">Mr. Dink</div>
+                        <div class="album-meta">SINGLE // 2026</div>
                     </div>
-
                 </div>
 
             </div>
-
-        </section>
-
-
-        <!-- ===================================================== -->
-        <!-- UP INTO DREAMS -->
-        <!-- ===================================================== -->
-
-        <section class="music-section">
-
-            <div class="page-header">
-
-                <h1>
-                    UP.INTO.DREAMS.
-                </h1>
-
-                <p class="tagline">
-                    Human created audio slop lives here....
-                </p>
-
-            </div>
+        </div>
 
 
-            <div class="container music-container">
+        <!-- Up Into Dreams -->
+        <div class="page-header text-center mt-5">
+            <h1>UP.INTO.DREAMS.</h1>
+            <p class="tagline">Human created audio slop lives here....</p>
+        </div>
 
-                <div class="row justify-content-center">
+        <div class="container music-container">
+            <div class="row justify-content-center">
 
-                    <!-- Determinism -->
-                    <div class="col-12 col-md-6 mb-4">
-
-                        <div class="album-card text-center h-100
-                            d-flex flex-column
-                            justify-content-center
-                            align-items-center">
-
-                            <a href="/musicPages/determinism.html">
-
-                                <img src="/music/upintodreams/determinism/cover.jpeg"
-                                    alt="Determinism Cover"
-                                    class="img-fluid">
-
-                            </a>
-
-                            <div class="album-title">
-                                Determinism
-                            </div>
-
-                            <div class="album-meta">
-                                RELEASE // 2025
-                            </div>
-
-                        </div>
-
+                <!-- Album: Determinism -->
+                <div class="col-12 col-md-6 mb-4">
+                    <div
+                        class="album-card text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                        <a href="/musicPages/determinism.html">
+                            <img src="/music/upintodreams/determinism/cover.jpeg" alt="Determinism Cover"
+                                class="img-fluid">
+                        </a>
+                        <div class="album-title">Determinism</div>
+                        <div class="album-meta">RELEASE // 2025</div>
                     </div>
+                </div>
 
-
-                    <!-- C'est Horrifique -->
-                    <div class="col-12 col-md-6 mb-4">
-
-                        <div class="album-card text-center h-100
-                            d-flex flex-column
-                            justify-content-center
-                            align-items-center">
-
-                            <a href="/musicPages/cesthorrifique.html">
-
-                                <img src="/music/upintodreams/cesthorrifique/cover.jpeg"
-                                    alt="C'est Horrifique Cover"
-                                    class="img-fluid">
-
-                            </a>
-
-                            <div class="album-title">
-                                C'est Horrifique
-                            </div>
-
-                            <div class="album-meta">
-                                RELEASE // 2021
-                            </div>
-
-                        </div>
-
+                <!-- Album: C'est Horrifique -->
+                <div class="col-12 col-md-6 mb-4">
+                    <div
+                        class="album-card text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                        <a href="/musicPages/cesthorrifique.html">
+                            <img src="/music/upintodreams/cesthorrifique/cover.jpeg" alt="C'est Horrifique Cover"
+                                class="img-fluid">
+                        </a>
+                        <div class="album-title">C'est Horrifique</div>
+                        <div class="album-meta">RELEASE // 2021</div>
                     </div>
-
                 </div>
 
             </div>
-
-        </section>
+        </div>
 
     </main>
 
 
     <!-- Footer -->
     <footer class="main-footer">
-
         <div class="footer-bottom container">
-
-            <p>
-                © 2040 SHOCK.THE.SYSTEM.. All rights reserved.
-            </p>
-
-            <p>
-                Template By
-                <a href="https://bootstrapious.com/p/bootstrap-carousel">
-                    Your Mom
-                </a>
-            </p>
-
+            <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
+            <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
         </div>
-
     </footer>
-
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous">
-    </script>
-
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
-```
