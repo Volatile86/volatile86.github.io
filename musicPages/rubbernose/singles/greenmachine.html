@@ -17,6 +17,111 @@
 
 
     <style>
+        /* =========================================================
+    ALBUM HEADER
+    ========================================================= */
+
+        .music-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .music-header h1 {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            line-height: 1;
+            text-shadow:
+                0 0 20px rgba(255, 61, 0, 0.25),
+                0 0 50px rgba(255, 61, 0, 0.1);
+        }
+
+        .music-header .subtitle {
+            margin-top: 15px;
+            color: #ff3d00;
+            font-family: monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+   ALBUM ART
+   ========================================================= */
+
+        .cover-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto 55px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-link {
+            display: block;
+            line-height: 0;
+        }
+
+        .album-cover {
+            display: block;
+            width: min(500px, 85vw);
+            height: auto;
+            border-radius: 12px;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.85),
+                0 0 45px rgba(255, 61, 0, 0.08);
+
+            transition:
+                transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+                box-shadow 0.4s ease;
+        }
+
+        .cover-link:hover .album-cover {
+            transform: scale(1.025);
+
+            box-shadow:
+                0 35px 90px rgba(0, 0, 0, 0.9),
+                0 0 60px rgba(255, 61, 0, 0.18);
+        }
+
+
+        /* =========================================================
+   MOBILE
+   ========================================================= */
+
+        @media (max-width: 768px) {
+
+            .music-header {
+                margin-bottom: 25px;
+            }
+
+            .music-header h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.08em;
+            }
+
+            .music-header .subtitle {
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+            }
+
+            .cover-wrapper {
+                margin-bottom: 35px;
+            }
+
+            .album-cover {
+                width: min(400px, 90vw);
+                border-radius: 9px;
+            }
+
+        }
+
         html,
         body {
             min-height: 100%;
@@ -482,28 +587,32 @@
     <main class="music-page">
 
 
+
+        <!-- Album Header -->
+        <header class="music-header">
+
+            <h1>
+                GREEN MACHINE
+            </h1>
+
+            <div class="subtitle">
+                RUBBER NOSE // SINGLE // 2026
+            </div>
+
+        </header>
+
         <!-- Album Artwork -->
+        <div class="cover-wrapper">
 
-        <div class="album-art-wrapper">
+            <a class="cover-link" href="/music/rubbernose/singles/greenmachine.jpg" target="_blank" rel="noopener">
 
-            <img src="/music/rubbernose/singles/greenmachine.jpg" alt="Green Machine Cover" class="album-art">
+                <img src="/music/rubbernose/singles/greenmachine.jpg" alt="Green Machine Cover" class="album-cover">
+
+            </a>
 
         </div>
 
 
-        <!-- Album Title -->
-
-        <header class="album-header">
-
-            <h1>
-                Green Machine
-            </h1>
-
-            <div class="subtitle">
-                Rubber Nose // Single // 2026
-            </div>
-
-        </header>
 
 
         <!-- Player -->
