@@ -8,13 +8,13 @@
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
 
   <style>
     html,
     body {
       min-height: 100vh;
-      /* Changed from height: 100% */
       margin: 0;
       background-color: #121212;
       color: #f8f9fa;
@@ -24,9 +24,11 @@
       letter-spacing: 0.03em;
     }
 
-    /* Navbar - Kept exact brand styling */
+    /* Navbar */
     .navbar {
       background-color: #1f1f1f !important;
+      position: relative;
+      z-index: 10;
     }
 
     .navbar-brand,
@@ -38,23 +40,32 @@
       color: #ff3d00 !important;
     }
 
-    /* Unified Hero Wrapper - Now acts as the page background canvas */
-    .hero {
+    /* Fixed Background Canvas */
+    .page-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-image: url(img/fire.jpg);
       background-repeat: repeat;
-
       background-position: center 35%;
+      z-index: 1;
+    }
+
+    /* Main Scrollable Content Wrapper */
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
+      flex: 1 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
       padding: 80px 20px;
-      min-height: calc(100vh - 56px);
-      /* Fills the viewport up completely */
-      flex: 1;
     }
 
-    .hero h1 {
+    /* Page Header */
+    .page-header h1 {
       color: #fff;
       font-size: 4rem;
       font-weight: 800;
@@ -63,7 +74,7 @@
       margin: 0;
     }
 
-    .hero .tagline {
+    .page-header .tagline {
       color: rgba(255, 255, 255, 0.5);
       font-size: 1.25rem;
       font-weight: 300;
@@ -73,12 +84,11 @@
       text-transform: uppercase;
     }
 
-    /* Jazzier Glassmorphic Blog Posts */
+    /* Blog Posts */
     .blog-container {
       max-width: 750px;
       width: 100%;
       margin-top: 50px;
-      /* Clean spacing instead of negative margins */
       position: relative;
       z-index: 3;
     }
@@ -91,7 +101,9 @@
       border-radius: 16px;
       padding: 3rem 2.5rem;
       margin-bottom: 40px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 61, 0, 0.03);
+      box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(255, 61, 0, 0.03);
     }
 
     .blog-post-meta {
@@ -157,6 +169,8 @@
       padding: 40px 20px 20px 20px;
       font-size: 14px;
       margin-top: auto;
+      position: relative;
+      z-index: 10;
     }
 
     .main-footer a {
@@ -180,7 +194,7 @@
 
     /* Responsive tweaks */
     @media (max-width: 768px) {
-      .hero h1 {
+      .page-header h1 {
         font-size: 2.5rem;
       }
 
@@ -199,88 +213,128 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KV6WZ444K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
 
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
     gtag('config', 'G-7KV6WZ444K');
   </script>
 </head>
 
 <body>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="index.html">SHOCK.THE.SYSTEM.</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+      <button class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+
         <span class="navbar-toggler-icon"></span>
+
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
+
         <ul class="navbar-nav ms-auto">
+
           <li class="nav-item">
             <a class="nav-link" href="index.html">Home</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="blog.html">Blog</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="books.html">Writing</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="vids.html">Vids</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="music.html">Music</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="pictures.html">Pictures</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="films.html">Films</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="crunch.html">Crunch</a>
           </li>
-          <!-- <li class="nav-item">
+
+          <!--
+          <li class="nav-item">
             <a class="nav-link" href="roguewave.html">Rouge Wave</a>
-          </li> -->
+          </li>
+          -->
+
           <li class="nav-item">
             <a class="nav-link" href="tessa.html">Tessa</a>
           </li>
+
         </ul>
+
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section (Now fully wraps the content so the image never breaks) -->
-  <section class="hero">
-    <div class="text-center">
+  <!-- Fixed Background -->
+  <div class="page-bg"></div>
+
+  <!-- Main Scrollable Content -->
+  <main class="content-wrapper">
+
+    <div class="page-header text-center">
       <h1>BLOG.</h1>
       <p class="tagline">Thoughts from nobody...</p>
     </div>
 
-    <!-- Blog Posts inside the hero canvas -->
-    <main class="blog-container">
+    <div class="blog-container">
 
+      <!-- LOG 003 -->
       <div class="blog-post">
+
         <div class="blog-post-meta">
           <div class="blog-post-badge">LOG // 003</div>
           <div class="blog-post-date">DATE: AUGUST 13, 2026</div>
         </div>
+
         <h3>Autopsy of Failure</h3>
+
         <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400;">
-            You ever look around and realize that you're seeing the same things regurgitated again and again. The same posts. The same stories. The same outrage. Yet, there are certain things you never see. I wonder why that is.
+          You ever look around and realize that you're seeing the same things regurgitated again and again.
+          The same posts. The same stories. The same outrage. Yet, there are certain things you never see.
+          I wonder why that is.
         </p>
+
       </div>
 
-      <!-- Post 1 -->
+      <!-- LOG 002 -->
       <div class="blog-post">
+
         <div class="blog-post-meta">
           <div class="blog-post-badge">LOG // 002</div>
           <div class="blog-post-date">DATE: JULY 17, 2026</div>
         </div>
+
         <h3>Autopsy of Failure</h3>
+
         <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400;">
           I've thought a lot about why SHOCK.THE.SYSTEM. 1.0 failed. I think the biggest thing is that it wasn't an
           "APP". You couldn't just click on it on your phone, you had to make an effort to go out to the site. What
@@ -294,35 +348,52 @@
           turn it into something else later, but since I was the only one using it, what was the point of keeping it
           around?
         </p>
+
       </div>
 
-      <!-- Post 1 -->
+      <!-- LOG 001 -->
       <div class="blog-post">
+
         <div class="blog-post-meta">
           <div class="blog-post-badge">LOG // 001</div>
           <div class="blog-post-date">DATE: JUNE 24, 2026</div>
         </div>
+
         <h3>The Architecture of Silence</h3>
+
         <p style="font-size: 1.25rem; color: #ffffff; font-weight: 400;">
           We're now afraid to say what we're thinking. What kind of freedom is that?
         </p>
+
       </div>
 
-    </main>
-  </section>
+    </div>
+
+  </main>
 
   <!-- Footer -->
   <footer class="main-footer">
+
     <div class="footer-bottom container">
+
       <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
-      <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
+
+      <p>
+        Template By
+        <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a>
+      </p>
+
     </div>
+
   </footer>
 
   <!-- Bootstrap 5 JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous">
+  </script>
+
 </body>
 
 </html>
