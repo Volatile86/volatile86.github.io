@@ -8,7 +8,8 @@
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
 
   <style>
     /* Reset & Base System Layout */
@@ -23,7 +24,7 @@
       flex-direction: column;
     }
 
-    /* Navbar Brand & Nav Links */
+    /* Navbar */
     .navbar {
       background-color: #1f1f1f !important;
       position: relative;
@@ -39,19 +40,36 @@
       color: #ff3d00 !important;
     }
 
-    /* Hero Canvas Layout */
-    .hero {
+    /*
+     * Fixed Background
+     *
+     * This is separated from the scrolling content so the
+     * fire background remains stationary while the cards move.
+     */
+    .page-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-image: url(img/fire.jpg);
       background-repeat: repeat;
       background-position: center 35%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /*
+     * Main Scrolling Content
+     */
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
       flex: 1 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      /* Keeps content naturally scrollable down from the top */
       padding: 120px 20px 60px 20px;
-      /* High top-padding prevents overlaps under navbar */
     }
 
     /* Typography Styling */
@@ -59,9 +77,10 @@
       font-size: 4rem;
       font-weight: 800;
       letter-spacing: 0.1em;
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.15), 3px 3px 8px rgba(0, 0, 0, 0.7);
+      text-shadow:
+        0 0 20px rgba(255, 255, 255, 0.15),
+        3px 3px 8px rgba(0, 0, 0, 0.7);
 
-      /* Safety guards for long unbroken words like SHOCK.THE.SYSTEM. */
       overflow-wrap: break-word;
       word-wrap: break-word;
       word-break: break-word;
@@ -95,7 +114,8 @@
       -webkit-backdrop-filter: blur(15px);
       border-radius: 16px;
       padding: 3rem 2.5rem;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
+      box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.8),
         0 0 40px rgba(255, 61, 0, 0.05);
     }
 
@@ -155,7 +175,7 @@
       letter-spacing: 0.02em;
     }
 
-    /* Footer Layout */
+    /* Footer */
     .main-footer {
       background-color: #1f1f1f;
       color: #cfcfcf;
@@ -187,27 +207,23 @@
 
     /* Responsive Mobile Overrides */
     @media (max-width: 768px) {
-      .hero {
+
+      .content-wrapper {
         padding-top: 100px;
-        /* Safely pushes header down past expanded/wrapping mobile navbars */
       }
 
       .hero-title {
-        /* Scalable font size based on mobile viewport width to prevent overflow */
         font-size: calc(0.8rem + 4vw);
         letter-spacing: 0.05em;
-        /* Tightens text tracking to keep it together */
       }
 
       .status-card {
         padding: 2rem 1.25rem;
-        /* Tighter padding inside cards on mobile devices */
       }
 
       .status-container {
         margin-top: 25px;
         padding: 0 10px;
-        /* Keeps cards cleanly inset from screen edges */
       }
 
       .footer-bottom {
@@ -222,314 +238,582 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KV6WZ444K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
 
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
     gtag('config', 'G-7KV6WZ444K');
   </script>
-
 
 </head>
 
 <body>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="index.html">SHOCK.THE.SYSTEM.</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+      <button class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+
         <span class="navbar-toggler-icon"></span>
+
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
+
         <ul class="navbar-nav ms-auto">
+
           <li class="nav-item">
             <a class="nav-link" href="index.html">Home</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="blog.html">Blog</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="books.html">Writing</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="vids.html">Vids</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="music.html">Music</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="pictures.html">Pictures</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="films.html">Films</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="crunch.html">Crunch</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="tessa.html">Tessa</a>
           </li>
+
         </ul>
+
       </div>
     </div>
   </nav>
 
-  <!-- Main Content Area -->
-  <main class="hero">
+  <!-- Fixed Background -->
+  <div class="page-bg"></div>
+
+  <!-- Main Scrolling Content -->
+  <main class="content-wrapper">
+
     <header class="text-center mb-4">
-      <h1 class="hero-title">SHOCK.THE.SYSTEM.</h1>
-      <p class="tagline">It begins again...</p>
+
+      <h1 class="hero-title">
+        SHOCK.THE.SYSTEM.
+      </h1>
+
+      <p class="tagline">
+        It begins again...
+      </p>
+
     </header>
 
-    <!-- Card: Rubber Nose -->
+    <!-- Wrecking Crew -->
     <section class="status-container">
 
-        <div class="status-card">
-          <div class="d-flex justify-content-between align-items-center card-meta-row">
-            <div class="status-badge">System Protocol v2.0</div>
-            <div class="status-timestamp">August 19, 2026</div>
-          </div>
-
-          <h2 class="status-title">The Wrecking Crew Crashed Last Night 💥</h2>
-
-          <div class="status-text">
-            <img src="img/wrecking_crew.jpg" class="img-fluid rounded mb-4" alt="Wrecking Crew">
-
-            <p class="fs-5 text-white fw-normal mb-4">
-              R.I.P. to <span class="brand-highlight">The Wrecking Crew</span>.
-            </p>
-
-            <p class="mb-4 opacity-90">
-              I came down too hard on a planet last night, and let's just say I buried the ship.
-            </p>
-
-          </div>
-        </div>
-    </section>
-
-    <section class="status-container">
       <div class="status-card">
 
         <div class="d-flex justify-content-between align-items-center card-meta-row">
-          <div class="status-badge">System Protocol v2.0</div>
-          <div class="status-timestamp">STATUS: TRANSMITTING</div>
+
+          <div class="status-badge">
+            System Protocol v2.0
+          </div>
+
+          <div class="status-timestamp">
+            August 19, 2026
+          </div>
+
         </div>
 
-        <h2 class="status-title">Two New Rubber Nose Songs Added 🪿</h2>
+        <h2 class="status-title">
+          The Wrecking Crew Crashed Last Night 💥
+        </h2>
 
         <div class="status-text">
 
-          <!-- Album Artwork -->
+          <img
+            src="img/wrecking_crew.jpg"
+            class="img-fluid rounded mb-4"
+            alt="Wrecking Crew">
+
+          <p class="fs-5 text-white fw-normal mb-4">
+            R.I.P. to
+            <span class="brand-highlight">
+              The Wrecking Crew
+            </span>.
+          </p>
+
+          <p class="mb-4 opacity-90">
+            I came down too hard on a planet last night, and let's just say I buried the ship.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Rubber Nose -->
+    <section class="status-container">
+
+      <div class="status-card">
+
+        <div class="d-flex justify-content-between align-items-center card-meta-row">
+
+          <div class="status-badge">
+            System Protocol v2.0
+          </div>
+
+          <div class="status-timestamp">
+            STATUS: TRANSMITTING
+          </div>
+
+        </div>
+
+        <h2 class="status-title">
+          Two New Rubber Nose Songs Added 🪿
+        </h2>
+
+        <div class="status-text">
+
           <div class="row g-4 mb-4">
 
             <div class="col-md-6">
-              <a href="/musicPages/rubbernose/singles/greenmachine.html" rel="noopener">
 
-                <img src="/music/rubbernose/singles/greenmachine.jpg" class="img-fluid rounded"
+              <a
+                href="/musicPages/rubbernose/singles/greenmachine.html"
+                rel="noopener">
+
+                <img
+                  src="/music/rubbernose/singles/greenmachine.jpg"
+                  class="img-fluid rounded"
                   alt="Green Machine cover">
 
               </a>
+
             </div>
 
             <div class="col-md-6">
-              <a href="/musicPages/rubbernose/singles/mrdinksayshi.html" rel="noopener">
 
-                <img src="/music/rubbernose/singles/mrdink.jpg" class="img-fluid rounded" alt="Mr. Dink Says Hi. cover">
+              <a
+                href="/musicPages/rubbernose/singles/mrdinksayshi.html"
+                rel="noopener">
+
+                <img
+                  src="/music/rubbernose/singles/mrdink.jpg"
+                  class="img-fluid rounded"
+                  alt="Mr. Dink Says Hi. cover">
 
               </a>
+
             </div>
-
-
 
           </div>
 
-
           <p class="fs-5 text-white fw-normal mb-4">
-            Two songs from <span class="brand-highlight">Rubber Nose</span> have officially
-            been added to the music section.
+
+            Two songs from
+            <span class="brand-highlight">
+              Rubber Nose
+            </span>
+            have officially been added to the music section.
+
           </p>
 
           <p class="mb-4 opacity-90">
-            <span class="danger-highlight">Green Machine</span> and
-            <span class="danger-highlight">Mr. Dink Says Hi.</span> are now available to
-            listen to on the site.
-          </p>
 
+            <span class="danger-highlight">
+              Green Machine
+            </span>
+            and
+            <span class="danger-highlight">
+              Mr. Dink Says Hi.
+            </span>
+            are now available to listen to on the site.
+
+          </p>
 
           <p class="mb-4 opacity-90">
-            Head over to the <span class="brand-highlight">Music</span> section to
-            listen to both tracks, check out the artwork, and download the music.
+
+            Head over to the
+            <span class="brand-highlight">
+              Music
+            </span>
+            section to listen to both tracks, check out the artwork, and download the music.
+
           </p>
-          <p class="mb-4 text-center" style="
-      font-size: clamp(1.5rem, 4vw, 2.25rem);
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #fff;
-      text-shadow:
-          0 0 10px rgba(255, 61, 0, 0.8),
-          0 0 25px rgba(255, 61, 0, 0.5),
-          0 0 50px rgba(255, 61, 0, 0.25);
-   ">
+
+          <p
+            class="mb-4 text-center"
+            style="
+              font-size: clamp(1.5rem, 4vw, 2.25rem);
+              font-weight: 900;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+              color: #fff;
+              text-shadow:
+                0 0 10px rgba(255, 61, 0, 0.8),
+                0 0 25px rgba(255, 61, 0, 0.5),
+                0 0 50px rgba(255, 61, 0, 0.25);
+            ">
+
             FORGET THE RULES.<br>
-            <span style="color: #ff3d00;">THE NOSE KNOWS.</span>
+
+            <span style="color: #ff3d00;">
+              THE NOSE KNOWS.
+            </span>
+
           </p>
 
           <div class="text-center mt-4">
 
-            <a href="music.html" class="btn btn-primary rounded-pill px-4">
+            <a
+              href="music.html"
+              class="btn btn-primary rounded-pill px-4">
+
               Enter the Musical Colosseum
+
             </a>
 
           </div>
 
-
         </div>
+
       </div>
+
     </section>
 
-    <!-- Card 3: Kepler-505 -->
+    <!-- Kepler-505 -->
     <section class="status-container">
+
       <div class="status-card">
+
         <div class="d-flex justify-content-between align-items-center card-meta-row">
-          <div class="status-badge">System Protocol v2.0</div>
-          <div class="status-timestamp">STATUS: ONLINE</div>
+
+          <div class="status-badge">
+            System Protocol v2.0
+          </div>
+
+          <div class="status-timestamp">
+            STATUS: ONLINE
+          </div>
+
         </div>
 
-        <h2 class="status-title">Kepler-505 Has Entered Orbit 🚀</h2>
+        <h2 class="status-title">
+          Kepler-505 Has Entered Orbit 🚀
+        </h2>
 
         <div class="status-text">
-          <img src="img/space-engineers.jpg" class="img-fluid rounded mb-4" alt="Kepler-505 Space Engineers Server">
+
+          <img
+            src="img/space-engineers.jpg"
+            class="img-fluid rounded mb-4"
+            alt="Kepler-505 Space Engineers Server">
 
           <p class="fs-5 text-white fw-normal mb-4">
-            The <span class="brand-highlight">Kepler-505 Dedicated Space Engineers Server</span> is live.
+
+            The
+            <span class="brand-highlight">
+              Kepler-505 Dedicated Space Engineers Server
+            </span>
+            is live.
+
           </p>
 
           <p class="mb-4 opacity-90">
-            The Kepler-505 Space Engineers server has come online. It is a survival sandbox
-            with warring factions and limited resources.
+
+            The Kepler-505 Space Engineers server has come online.
+            It is a survival sandbox with warring factions and limited resources.
+
           </p>
 
           <p class="cyan-void-highlight mb-4">
-            I'm accepting new additions to the server. Get with me for access.
+
+            I'm accepting new additions to the server.
+            Get with me for access.
+
           </p>
 
           <blockquote class="mb-0 opacity-75">
+
             "The middle of adventure is<br>
             such a perfect place to start...."
+
           </blockquote>
 
         </div>
+
       </div>
+
     </section>
 
+    <!-- STS 1.0 -->
     <section class="status-container">
+
       <div class="status-card">
+
         <div class="d-flex justify-content-between align-items-center card-meta-row">
-          <div class="status-badge">System Protocol v2.0</div>
-          <div class="status-timestamp">STATUS: TRANSMITTING</div>
+
+          <div class="status-badge">
+            System Protocol v2.0
+          </div>
+
+          <div class="status-timestamp">
+            STATUS: TRANSMITTING
+          </div>
+
         </div>
 
-        <h2 class="status-title">RIP to a dream I had. STS 1.0 is dead. 😥</h2>
+        <h2 class="status-title">
+          RIP to a dream I had. STS 1.0 is dead. 😥
+        </h2>
 
         <div class="status-text">
-          <div style="font-size: 1.25rem; color: #ffffff; font-weight: 400; max-width: 560px; margin: 0 auto;">
+
+          <div
+            style="
+              font-size: 1.25rem;
+              color: #ffffff;
+              font-weight: 400;
+              max-width: 560px;
+              margin: 0 auto;
+            ">
+
             <div class="ratio ratio-16x9">
-              <iframe src="https://www.youtube.com/embed/HmSogy4SaH4?si=bnUrsIAzXWHYV9K1" title="YouTube video player"
+
+              <iframe
+                src="https://www.youtube.com/embed/HmSogy4SaH4?si=bnUrsIAzXWHYV9K1"
+                title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
 
+    <!-- Static Site -->
     <section class="status-container">
+
       <div class="status-card">
+
         <div class="d-flex justify-content-between align-items-center card-meta-row">
-          <div class="status-badge">System Protocol v2.0</div>
-          <div class="status-timestamp">STATUS: TRANSMITTING</div>
+
+          <div class="status-badge">
+            System Protocol v2.0
+          </div>
+
+          <div class="status-timestamp">
+            STATUS: TRANSMITTING
+          </div>
+
         </div>
 
-        <h2 class="status-title">New Static Site Live</h2>
+        <h2 class="status-title">
+          New Static Site Live
+        </h2>
 
         <div class="status-text">
+
           <p class="fs-5 text-white fw-normal mb-4">
-            New static site is <span class="brand-highlight">live.</span>.
+
+            New static site is
+            <span class="brand-highlight">
+              live.
+            </span>
+
           </p>
+
           <p class="mb-0 opacity-90">
-            <span class="danger-highlight">As far as game scores and posts and all that good stuff from the social media
-              site, I've got it all backed up. If I decide to relaunch it one of these days, I see have everything
-              (Yeah, I know I'll never beat those flappy bird scores). Hopefully I can bring some games here as well. It
-              won't work the same since this site isn't database driven, but we can see what happens.</span>
+
+            <span class="danger-highlight">
+
+              As far as game scores and posts and all that good stuff from the social media
+              site, I've got it all backed up. If I decide to relaunch it one of these days,
+              I see have everything (Yeah, I know I'll never beat those flappy bird scores).
+              Hopefully I can bring some games here as well. It won't work the same since
+              this site isn't database driven, but we can see what happens.
+
+            </span>
+
           </p>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- Card 1: Discord -->
+    <!-- Discord -->
     <section class="status-container">
+
       <div class="status-card">
+
         <div class="d-flex justify-content-between align-items-center card-meta-row">
-          <div class="status-badge">System Protocol v2.0</div>
-          <div class="status-timestamp">STATUS: TRANSMITTING</div>
+
+          <div class="status-badge">
+            System Protocol v2.0
+          </div>
+
+          <div class="status-timestamp">
+            STATUS: TRANSMITTING
+          </div>
+
         </div>
 
-        <h2 class="status-title">Join The Discord Server</h2>
+        <h2 class="status-title">
+          Join The Discord Server
+        </h2>
 
         <div class="status-text">
+
           <p class="fs-5 text-white fw-normal mb-4">
-            Come check out the <span class="brand-highlight">SHOCK.THE.SYSTEM. Discord Server</span>.
+
+            Come check out the
+            <span class="brand-highlight">
+              SHOCK.THE.SYSTEM. Discord Server
+            </span>.
+
           </p>
+
           <p class="mb-0 opacity-90">
-            <span class="danger-highlight">Lots of cool things are going on. Contact me if you want an invite.</span>
+
+            <span class="danger-highlight">
+              Lots of cool things are going on.
+              Contact me if you want an invite.
+            </span>
+
           </p>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- Card 2: State of the Void -->
+    <!-- State of the Void -->
     <section class="status-container">
+
       <div class="status-card">
+
         <div class="d-flex justify-content-between align-items-center card-meta-row">
-          <div class="status-badge">System Protocol v2.0</div>
-          <div class="status-timestamp">STATUS: TRANSMITTING</div>
+
+          <div class="status-badge">
+            System Protocol v2.0
+          </div>
+
+          <div class="status-timestamp">
+            STATUS: TRANSMITTING
+          </div>
+
         </div>
 
-        <h2 class="status-title">Current State of the Void</h2>
+        <h2 class="status-title">
+          Current State of the Void
+        </h2>
 
         <div class="status-text">
+
           <p class="fs-5 text-white fw-normal mb-4">
-            The social media experiment known as <span class="brand-highlight">SHOCK.THE.SYSTEM. 1.0</span> has shut
-            down.
+
+            The social media experiment known as
+            <span class="brand-highlight">
+              SHOCK.THE.SYSTEM. 1.0
+            </span>
+            has shut down.
+
           </p>
+
           <p class="mb-4 opacity-90">
-            To summarize: <span class="danger-highlight">it was a complete failure.</span> The nostalgic MySpace model
-            of old no longer appears to be viable in this ecosystem. Infinite algorithmic doomscrolling on central
-            corporate feeds seems to be the dopamine hit of choice for the masses. It may come back one day. It may not.
+
+            To summarize:
+            <span class="danger-highlight">
+              it was a complete failure.
+            </span>
+
+            The nostalgic MySpace model of old no longer appears to be viable
+            in this ecosystem. Infinite algorithmic doomscrolling on central
+            corporate feeds seems to be the dopamine hit of choice for the masses.
+            It may come back one day. It may not.
+
           </p>
+
           <p class="cyan-void-highlight mb-0">
-            Not to fret, though. It is time to clear the cache. Time to begin again.
+
+            Not to fret, though.
+            It is time to clear the cache.
+            Time to begin again.
+
           </p>
+
         </div>
+
       </div>
+
     </section>
+
   </main>
 
   <!-- Footer -->
   <footer class="main-footer">
+
     <div class="footer-bottom container">
-      <p>© 2040 SHOCK.THE.SYSTEM.. All rights reserved.</p>
-      <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel">Your Mom</a></p>
+
+      <p>
+        © 2040 SHOCK.THE.SYSTEM.. All rights reserved.
+      </p>
+
+      <p>
+        Template By
+        <a href="https://bootstrapious.com/p/bootstrap-carousel">
+          Your Mom
+        </a>
+      </p>
+
     </div>
+
   </footer>
 
   <!-- Bootstrap 5 JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFZg1Nl+NtM6uM4Y4xYJQvQ5ZQ4m3kZ2Z0YQW7L7Wf6gK7y3q9vX3J"
+    crossorigin="anonymous">
+  </script>
+
 </body>
 
 </html>
