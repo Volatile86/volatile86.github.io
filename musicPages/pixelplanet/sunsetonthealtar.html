@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sunset on the Altar | Pixel Planet</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Howler.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            background:
+                radial-gradient(circle at 20% 10%, rgba(255, 61, 0, 0.12), transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(0, 150, 255, 0.08), transparent 35%),
+                linear-gradient(180deg, #080808 0%, #121212 50%, #080808 100%);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* =========================================================
+           NAVBAR
+           ========================================================= */
+
+        .navbar {
+            background-color: rgba(20, 20, 20, 0.95) !important;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+            z-index: 100;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #f8f9fa !important;
+        }
+
+        .nav-link {
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff3d00 !important;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        /* =========================================================
+           MAIN CONTENT
+           ========================================================= */
+
+        .music-page {
+            flex: 1;
+            width: 100%;
+            padding: 70px 20px 90px;
+        }
+
+        /* =========================================================
+           ALBUM HEADER
+           ========================================================= */
+
+        .music-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .music-header h1 {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            line-height: 1;
+            text-shadow:
+                0 0 20px rgba(255, 61, 0, 0.25),
+                0 0 50px rgba(255, 61, 0, 0.1);
+        }
+
+        .music-header .subtitle {
+            margin-top: 15px;
+            color: #ff3d00;
+            font-family: monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        /* =========================================================
+           ALBUM ART
+           ========================================================= */
+
+        .cover-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto 55px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-link {
+            display: block;
+            line-height: 0;
+        }
+
+        .album-cover {
+            display: block;
+            width: min(500px, 85vw);
+            height: auto;
+            border-radius: 12px;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.85),
+                0 0 45px rgba(255, 61, 0, 0.08);
+
+            transition:
+                transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+                box-shadow 0.4s ease;
+        }
+
+        .cover-link:hover .album-cover {
+            transform: scale(1.025);
+            box-shadow:
+                0 35px 90px rgba(0, 0, 0, 0.9),
+                0 0 60px rgba(255, 61, 0, 0.18);
+        }
+
+        /* =========================================================
+           PLAYER
+           ========================================================= */
+
+        .player-container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px;
+
+            background: rgba(20, 20, 20, 0.88);
+
+            border: 1px solid rgba(255, 61, 0, 0.12);
+            border-radius: 18px;
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.75),
+                0 0 50px rgba(255, 61, 0, 0.04);
+
+            text-align: center;
+        }
+
+        /* =========================================================
+           VISUALIZER
+           ========================================================= */
+
+        #visualizer-container {
+            width: 100%;
+        }
+
+        #visualizer {
+            display: block;
+            width: 100%;
+            height: 150px;
+
+            background: #080808;
+
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                inset 0 0 30px rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(255, 61, 0, 0.03);
+        }
+
+        /* =========================================================
+           SONG LIST
+           ========================================================= */
+
+        .song-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 30px;
+            text-align: left;
+        }
+
+        .song-list li {
+            padding: 13px 16px;
+            margin: 7px 0;
+
+            color: #ddd;
+
+            background: rgba(255, 255, 255, 0.025);
+
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .song-list li:hover {
+            color: #fff;
+            background: linear-gradient(90deg,
+                    rgba(255, 61, 0, 0.85),
+                    rgba(255, 106, 0, 0.75));
+
+            border-color: rgba(255, 61, 0, 0.4);
+            transform: translateX(6px);
+        }
+
+        /* =========================================================
+           PLAYER BUTTONS
+           ========================================================= */
+
+        .player-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .player-buttons button {
+            margin: 0;
+            border-radius: 25px;
+            padding: 10px 24px;
+            font-weight: 600;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff3d00, #ff6a00);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #ff4d16, #ff761a);
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, #ff003c, #ff5c5c);
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background: linear-gradient(45deg, #ff174d, #ff7070);
+        }
+
+        /* =========================================================
+           DOWNLOAD
+           ========================================================= */
+
+        .download-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .download-label {
+            color: #999;
+            font-size: 0.75rem;
+            font-family: monospace;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .download-button {
+            display: inline-block;
+
+            padding: 12px 28px;
+
+            color: #fff;
+            background: transparent;
+
+            border: 1px solid #ff3d00;
+            border-radius: 25px;
+
+            text-decoration: none;
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                box-shadow 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .download-button:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #ff3d00, #ff6a00);
+
+            box-shadow:
+                0 10px 30px rgba(255, 61, 0, 0.2);
+
+            transform: translateY(-2px);
+        }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .main-footer {
+            background: #0f0f0f;
+            color: #cfcfcf;
+
+            padding: 40px 20px 20px;
+
+            font-size: 14px;
+            margin-top: auto;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-footer a {
+            color: #ff3d00;
+            text-decoration: none;
+        }
+
+        .main-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* =========================================================
+           MOBILE
+           ========================================================= */
+
+        @media (max-width: 768px) {
+
+            .music-page {
+                padding: 50px 15px 60px;
+            }
+
+            .music-header {
+                margin-bottom: 25px;
+            }
+
+            .music-header h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.08em;
+            }
+
+            .music-header .subtitle {
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+            }
+
+            .cover-wrapper {
+                margin-bottom: 35px;
+            }
+
+            .album-cover {
+                width: min(400px, 90vw);
+                border-radius: 9px;
+            }
+
+            .player-container {
+                padding: 25px 18px;
+                border-radius: 14px;
+            }
+
+            #visualizer {
+                height: 110px;
+            }
+
+            .song-list li {
+                padding: 12px 13px;
+                font-size: 0.9rem;
+            }
+
+            .player-buttons {
+                flex-direction: column;
+            }
+
+            .player-buttons button {
+                width: 100%;
+            }
+
+            .download-button {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         NAVBAR
+         ========================================================= -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+
+            <a class="navbar-brand" href="/index.html">
+                SHOCK.THE.SYSTEM.
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog.html">Blog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/books.html">Writing</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vids.html">Vids</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/music.html">Music</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pictures.html">Pictures</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/films.html">Films</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crunch.html">Crunch</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tessa.html">Tessa</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- =========================================================
+         MAIN MUSIC PAGE
+         ========================================================= -->
+
+    <main class="music-page">
+
+        <!-- Album Header -->
+        <header class="music-header">
+
+            <h1>Sunset on the Altar</h1>
+
+            <div class="subtitle">
+                PIXEL.PLANET. // ALBUM // 2026
+            </div>
+
+        </header>
+
+
+        <!-- Album Artwork -->
+        <div class="cover-wrapper">
+
+            <a class="cover-link" href="/music/pixelplanet/sunset_on_the_altar/cover.jpeg" target="_blank" rel="noopener">
+
+                <img src="/music/pixelplanet/sunset_on_the_altar/cover.jpeg" alt="Sunset on the Altar album cover" class="album-cover">
+
+            </a>
+
+        </div>
+
+
+        <!-- Player -->
+        <div class="container player-container">
+
+            <!-- Visualizer -->
+            <div id="visualizer-container">
+
+                <canvas id="visualizer"></canvas>
+
+            </div>
+
+
+            <!-- Song List -->
+            <ul class="song-list">
+
+                <li onclick="playSong(0)">
+                    1. why
+                </li>
+
+                <li onclick="playSong(1)">
+                    2. would
+                </li>
+
+                <li onclick="playSong(2)">
+                    3. anyone
+                </li>
+
+                <li onclick="playSong(3)">
+                    4. bother
+                </li>
+
+                <li onclick="playSong(4)">
+                    5. to
+                </li>
+
+                <li onclick="playSong(5)">
+                    6. do
+                </li>
+
+                <li onclick="playSong(6)">
+                    7. anything?
+                </li>
+
+                <li onclick="playSong(7)">
+                    8. it's
+                </li>
+
+                <li onclick="playSong(8)">
+                    9. because
+                </li>
+
+                <li onclick="playSong(9)">
+                    10. i
+                </li>
+
+                <li onclick="playSong(10)">
+                    11. can.
+                </li>
+
+            </ul>
+
+
+            <!-- Player Buttons -->
+            <div class="player-buttons mt-3">
+
+                <button class="btn btn-primary" onclick="playNextSong()">
+                    Play Next Song
+                </button>
+
+                <button class="btn btn-danger" onclick="stopSong()">
+                    Stop
+                </button>
+
+            </div>
+
+
+            <!-- Download -->
+            <div class="download-section">
+
+                <div class="download-label">
+                    Full Album
+                </div>
+
+                <a href="/music/pixelplanet/sunset_on_the_altar/sunsetonthealtar.zip" class="download-button" download>
+
+                    Download "Sunset on the Altar"
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="main-footer">
+
+        <div class="footer-bottom container">
+
+            <p>
+                © 2040 SHOCK.THE.SYSTEM.. All rights reserved.
+            </p>
+
+            <p>
+                Template By
+                <a href="https://bootstrapious.com/p/bootstrap-carousel">
+                    Your Mom
+                </a>
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+
+
+    <!-- =========================================================
+         HOWLER.JS PLAYER
+         ========================================================= -->
+
+    <script>
+
+        const songList = [
+            '/music/pixelplanet/sunset_on_the_altar/1 - why.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/2 - would.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/3 - anyone.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/4 - bother.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/5 - to.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/6 - do.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/7 - anything.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/8 - its.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/9 - because.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/10 - i.mp3',
+            '/music/pixelplanet/sunset_on_the_altar/11 - can.mp3'
+        ];
+
+
+        let currentSongIndex = 0;
+
+        let currentSong = new Howl({
+            src: [songList[currentSongIndex]],
+            html5: true,
+            onend: playNextSong
+        });
+
+
+        let audioSource;
+
+        let analyser = Howler.ctx.createAnalyser();
+
+        const canvas = document.getElementById('visualizer');
+
+        const ctx = canvas.getContext('2d');
+
+
+        function resizeCanvas() {
+
+            const rect = canvas.getBoundingClientRect();
+
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+
+        }
+
+
+        window.addEventListener('resize', resizeCanvas);
+
+        resizeCanvas();
+
+
+        function playSong(index) {
+
+            currentSong.stop();
+
+            currentSongIndex = index;
+
+            currentSong = new Howl({
+                src: [songList[currentSongIndex]],
+                html5: true,
+                onend: playNextSong
+            });
+
+            currentSong.play();
+
+            setupVisualizer();
+        }
+
+
+        function playNextSong() {
+
+            currentSong.stop();
+
+            currentSongIndex =
+                (currentSongIndex + 1) % songList.length;
+
+            currentSong = new Howl({
+                src: [songList[currentSongIndex]],
+                html5: true,
+                onend: playNextSong
+            });
+
+            currentSong.play();
+
+            setupVisualizer();
+        }
+
+
+        function stopSong() {
+
+            currentSong.stop();
+
+        }
+
+
+        function setupVisualizer() {
+
+            if (!currentSong._sounds.length) {
+                return;
+            }
+
+            const audioNode =
+                currentSong._sounds[0]._node;
+
+            if (!audioNode) {
+                return;
+            }
+
+            analyser = Howler.ctx.createAnalyser();
+
+            audioSource =
+                Howler.ctx.createMediaElementSource(audioNode);
+
+            audioSource.connect(analyser);
+
+            analyser.connect(Howler.ctx.destination);
+
+            analyser.fftSize = 256;
+
+            visualize();
+
+        }
+
+
+        function visualize() {
+
+            requestAnimationFrame(visualize);
+
+            const bufferLength =
+                analyser.frequencyBinCount;
+
+            const dataArray =
+                new Uint8Array(bufferLength);
+
+            analyser.getByteFrequencyData(dataArray);
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+            const barWidth =
+                (canvas.width / bufferLength) * 2.5;
+
+            let x = 0;
+
+            for (let i = 0; i < bufferLength; i++) {
+
+                const barHeight =
+                    (dataArray[i] / 255) *
+                    canvas.height;
+
+                const pulse =
+                    Math.sin(
+                        (Date.now() / 100) + i
+                    ) * 5;
+
+                const hue =
+                    (Date.now() / 50 + i * 8) % 360;
+
+                ctx.fillStyle =
+                    `hsl(${hue}, 100%, 50%)`;
+
+                ctx.fillRect(
+                    x,
+                    canvas.height - barHeight - pulse,
+                    barWidth,
+                    barHeight + pulse
+                );
+
+                x += barWidth + 1;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
