@@ -62,6 +62,14 @@
             border-color: rgba(255, 255, 255, 0.15) !important;
         }
 
+        .song-list li.playing {
+            color: #fff;
+            background: linear-gradient(90deg, #ff3d00, #ff6a00);
+            border-color: rgba(255, 61, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 61, 0, 0.15);
+            transform: translateX(6px);
+        }
+
         /* =========================================================
            MAIN CONTENT
            ========================================================= */
@@ -513,9 +521,11 @@
         <!-- Album Artwork -->
         <div class="cover-wrapper">
 
-            <a class="cover-link" href="/music/pixelplanet/sunset_on_the_altar/cover.jpeg" target="_blank" rel="noopener">
+            <a class="cover-link" href="/music/pixelplanet/sunset_on_the_altar/cover.jpeg" target="_blank"
+                rel="noopener">
 
-                <img src="/music/pixelplanet/sunset_on_the_altar/cover.jpg" alt="Sunset on the Altar album cover" class="album-cover">
+                <img src="/music/pixelplanet/sunset_on_the_altar/cover.jpg" alt="Sunset on the Altar album cover"
+                    class="album-cover">
 
             </a>
 
@@ -652,6 +662,14 @@
 
     <script>
 
+        function updatePlayingSong() {
+            const songs = document.querySelectorAll('.song-list li');
+
+            songs.forEach((song, index) => {
+                song.classList.toggle('playing', index === currentSongIndex);
+            });
+        }
+
         const songList = [
             '/music/pixelplanet/sunset_on_the_altar/1 - why.mp3',
             '/music/pixelplanet/sunset_on_the_altar/2 - would.mp3',
@@ -701,7 +719,6 @@
 
 
         function playSong(index) {
-
             currentSong.stop();
 
             currentSongIndex = index;
@@ -714,12 +731,12 @@
 
             currentSong.play();
 
+            updatePlayingSong();
             setupVisualizer();
         }
 
 
         function playNextSong() {
-
             currentSong.stop();
 
             currentSongIndex =
@@ -733,14 +750,19 @@
 
             currentSong.play();
 
+            updatePlayingSong();
             setupVisualizer();
         }
 
 
         function stopSong() {
-
             currentSong.stop();
 
+            const songs = document.querySelectorAll('.song-list li');
+
+            songs.forEach(song => {
+                song.classList.remove('playing');
+            });
         }
 
 
