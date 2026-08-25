@@ -102,14 +102,6 @@
             text-transform: uppercase;
         }
 
-        .song-list li.playing {
-            color: #fff;
-            background: linear-gradient(90deg, #ff3d00, #ff6a00);
-            border-color: rgba(255, 61, 0, 0.5);
-            box-shadow: 0 0 20px rgba(255, 61, 0, 0.15);
-            transform: translateX(6px);
-        }
-
         /* =========================================================
            ALBUM ART
            ========================================================= */
@@ -214,14 +206,10 @@
         .song-list li {
             padding: 13px 16px;
             margin: 7px 0;
-
             color: #ddd;
-
             background: rgba(255, 255, 255, 0.025);
-
             border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 9px;
-
             cursor: pointer;
 
             transition:
@@ -236,8 +224,15 @@
             background: linear-gradient(90deg,
                     rgba(255, 61, 0, 0.85),
                     rgba(255, 106, 0, 0.75));
-
             border-color: rgba(255, 61, 0, 0.4);
+            transform: translateX(6px);
+        }
+
+        .song-list li.playing {
+            color: #fff;
+            background: linear-gradient(90deg, #ff3d00, #ff6a00);
+            border-color: rgba(255, 61, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 61, 0, 0.15);
             transform: translateX(6px);
         }
 
