@@ -175,6 +175,14 @@
             border-color: rgba(255, 255, 255, 0.1) !important;
         }
 
+        .song-list li.playing {
+            color: #fff;
+            background: linear-gradient(90deg, #ff3d00, #ff6a00);
+            border-color: rgba(255, 61, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 61, 0, 0.15);
+            transform: translateX(6px);
+        }
+
 
         /* =========================================================
            MAIN CONTENT
@@ -1028,6 +1036,14 @@
 
         let currentSongIndex = 0;
 
+        function updatePlayingSong() {
+            const songs = document.querySelectorAll('.song-list li');
+
+            songs.forEach((song, index) => {
+                song.classList.toggle('playing', index === currentSongIndex);
+            });
+        }
+
 
         let currentSong = new Howl({
             src: [songList[currentSongIndex]],
@@ -1053,64 +1069,50 @@
 
 
         function playSong(index) {
-
             currentSong.stop();
 
             currentSongIndex = index;
 
-
             currentSong = new Howl({
-
-                src: [
-                    songList[currentSongIndex]
-                ],
-
+                src: [songList[currentSongIndex]],
                 html5: true,
-
                 onend: playNextSong
-
             });
-
 
             currentSong.play();
 
+            updatePlayingSong();
             setupVisualizer();
         }
 
 
         function playNextSong() {
-
             currentSong.stop();
 
-
             currentSongIndex =
-                (currentSongIndex + 1) %
-                songList.length;
-
+                (currentSongIndex + 1) % songList.length;
 
             currentSong = new Howl({
-
-                src: [
-                    songList[currentSongIndex]
-                ],
-
+                src: [songList[currentSongIndex]],
                 html5: true,
-
                 onend: playNextSong
-
             });
-
 
             currentSong.play();
 
+            updatePlayingSong();
             setupVisualizer();
         }
 
 
         function stopSong() {
-
             currentSong.stop();
 
+            const songs = document.querySelectorAll('.song-list li');
+
+            songs.forEach(song => {
+                song.classList.remove('playing');
+            });
         }
 
 

@@ -102,6 +102,14 @@
             text-transform: uppercase;
         }
 
+        .song-list li.playing {
+            color: #fff;
+            background: linear-gradient(90deg, #ff3d00, #ff6a00);
+            border-color: rgba(255, 61, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 61, 0, 0.15);
+            transform: translateX(6px);
+        }
+
         /* =========================================================
            ALBUM ART
            ========================================================= */
@@ -684,6 +692,14 @@
 
         const ctx = canvas.getContext('2d');
 
+        function updatePlayingSong() {
+            const songs = document.querySelectorAll('.song-list li');
+
+            songs.forEach((song, index) => {
+                song.classList.toggle('playing', index === currentSongIndex);
+            });
+        }
+
 
         function resizeCanvas() {
 
@@ -701,7 +717,6 @@
 
 
         function playSong(index) {
-
             currentSong.stop();
 
             currentSongIndex = index;
@@ -714,12 +729,12 @@
 
             currentSong.play();
 
+            updatePlayingSong();
             setupVisualizer();
         }
 
 
         function playNextSong() {
-
             currentSong.stop();
 
             currentSongIndex =
@@ -733,14 +748,18 @@
 
             currentSong.play();
 
+            updatePlayingSong();
             setupVisualizer();
         }
 
-
         function stopSong() {
-
             currentSong.stop();
 
+            const songs = document.querySelectorAll('.song-list li');
+
+            songs.forEach(song => {
+                song.classList.remove('playing');
+            });
         }
 
 
